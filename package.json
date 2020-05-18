@@ -4,7 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "TESTING=TRUE jest",
 		"lint": "eslint .",
 		"prettify": "pretty-quick --staged"
 	},
@@ -18,6 +18,12 @@
 			"eslint",
 			"pretty-quick --staged",
 			"git add"
+		]
+	},
+	"jest": {
+		"testEnvironment": "node",
+		"coveragePathIgnorePatterns": [
+			"/node_modules/"
 		]
 	},
 	"keywords": [],
