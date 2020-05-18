@@ -40,5 +40,9 @@
 		"prettier": "^2.0.5",
 		"pretty-quick": "^2.0.1",
 		"supertest": "^4.0.2"
+	},
+	"dependencies": {
+		"dotenv": "^8.2.0",
+		"pg": "^8.2.1"
 	}
 }
