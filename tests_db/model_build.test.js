@@ -2,6 +2,7 @@
 // const connection = require('../db/connection');
 
 test("dummy test so our otherwise empty tests don't crash", () => {
+	console.log('You should not see me');
 	expect(3).toBe(3);
 });
 
