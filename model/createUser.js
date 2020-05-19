@@ -1,10 +1,14 @@
 const db = require('../db/connection.js');
 
-function createUser({ user_name, email, password: password_slug }) {
+function createUser({ userName, email, password: passwordSlug }) {
 	return db
 		.query(
-			'INSERT INTO users(user_name, email, password_slug) VALUES ($1, $2, $3) RETURNING user_id',
-			[user_name, email, password_slug],
+			`INSERT INTO
+			 	users(user_name, email, password_slug)
+			VALUES
+				($1, $2, $3)
+			RETURNING user_id`,
+			[userName, email, passwordSlug],
 		)
 		.then((result) => result.rows[0].user_id);
 }

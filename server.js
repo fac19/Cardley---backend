@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require('express');
-const auth = require('./middleware/auth');
+// const auth = require('./middleware/auth');
 const handleError = require('./middleware/error');
 
 // Our handlers
@@ -18,6 +18,7 @@ server.use(handleError);
 
 if (process.env.TESTING !== 'TRUE') {
 	server.listen(PORT, () =>
+		// eslint-disable-next-line
 		console.log(`Listening on http://localhost:${PORT}`),
 	);
 }

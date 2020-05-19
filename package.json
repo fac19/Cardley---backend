@@ -11,6 +11,18 @@
 		"lint": "eslint .",
 		"prettify": "pretty-quick --staged"
 	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	},
+	"lint-staged": {
+		"*.js": [
+			"eslint",
+			"pretty-quick --staged",
+			"git add"
+		]
+	},
 	"jest": {
 		"testEnvironment": "node",
 		"coveragePathIgnorePatterns": [

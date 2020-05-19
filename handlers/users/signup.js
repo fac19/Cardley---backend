@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const createUser = require('../../model/createUser.js');
 
 function signup(req, res, next) {

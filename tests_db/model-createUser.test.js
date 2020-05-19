@@ -20,7 +20,7 @@ test('signup data is successfully entered into db', () => {
 	});
 });
 
-//ends the connection to the pool (so that the tests can end their process)
+// ends the connection to the pool (so that the tests can end their process)
 afterAll(() => {
 	db.end();
 });
