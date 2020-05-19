@@ -15,9 +15,8 @@
 	},
 	"lint-staged": {
 		"*.js": [
-			"eslint",
 			"pretty-quick --staged",
-			"git add"
+			"eslint"
 		]
 	},
 	"jest": {
