@@ -10,7 +10,7 @@ test('signup data is successfully entered into db', () => {
 	return build().then(() => {
 		// console.log('Wut?!');
 		const params = {
-			user_name: 'Bob',
+			userName: 'Bob',
 			email: 'bob@iscool.com',
 			password: 'wevs',
 		};

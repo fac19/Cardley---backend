@@ -42,6 +42,7 @@ function build() {
 }
 
 // Allows build to be ran on the command line, npm run setupdb will now run build()
+// require.main === module checks if it is running on the terminal run the build()
 if (require.main === module) build();
 
 // In our tests we import then run build().then( our test code here )
