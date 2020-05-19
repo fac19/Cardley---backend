@@ -1,4 +1,4 @@
-import signupModel from '../../model/users-signup';
+const createUser = require('../../model/createUser.js');
 
 function signup(req, res, next) {
 	// if (
@@ -53,4 +53,4 @@ function signup(req, res, next) {
 	//       .catch(next);
 }
 
-export default signup;
+module.exports = signup;
