@@ -13,4 +13,4 @@ function createUser({ userName, email, password }) {
 		.then((result) => result.rows[0].user_id);
 }
 
-module.exports = { createUser };
+module.exports = createUser;

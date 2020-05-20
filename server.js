@@ -5,6 +5,7 @@ const handleError = require('./middleware/error');
 
 // Our handlers
 const signup = require('./handlers/users/signup.js');
+const login = require('./handlers/users/login.js');
 const getPublic = require('./handlers/decks/getPublic.js');
 
 const PORT = process.env.PORT || 3000;
@@ -12,6 +13,7 @@ const server = express();
 server.use(express.json());
 
 server.post('/signup', signup);
+server.post('/login', login);
 server.get('/public-decks', getPublic);
 
 server.use(handleError);

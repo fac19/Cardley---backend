@@ -4,9 +4,10 @@
 	"description": "",
 	"main": "server.js",
 	"scripts": {
-		"dev": "nodemon server.js",
+		"dev": "LOGGING=ON nodemon server.js",
+		"debug": "LOGGING=VERBOSE nodemon server.js",
 		"test": "TESTING=TRUE jest tests/*.test.js",
-		"testdb": "TESTING=TRUE jest tests_db/*.test.js",
+		"testdb": "TESTING=TRUE jest -i testsdb/*.test.js",
 		"initdb": "node db/build.js",
 		"lint": "eslint .",
 		"prettify": "pretty-quick --staged"
