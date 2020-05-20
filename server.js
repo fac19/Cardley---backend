@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 // const auth = require('./middleware/auth');
 const handleError = require('./middleware/error');
 
@@ -11,6 +12,7 @@ const getPublic = require('./handlers/decks/getPublic.js');
 const PORT = process.env.PORT || 3000;
 const server = express();
 server.use(express.json());
+server.use(cors());
 
 server.post('/signup', signup);
 server.post('/login', login);
