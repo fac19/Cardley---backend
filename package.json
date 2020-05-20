@@ -2,9 +2,13 @@
 	"name": "flashcard-api",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.js",
+	"main": "server.js",
 	"scripts": {
-		"test": "TESTING=TRUE jest",
+		"dev": "LOGGING=ON nodemon server.js",
+		"debug": "LOGGING=VERBOSE nodemon server.js",
+		"test": "TESTING=TRUE jest tests/*.test.js",
+		"testdb": "TESTING=TRUE jest -i testsdb/*.test.js",
+		"initdb": "node db/build.js",
 		"lint": "eslint .",
 		"prettify": "pretty-quick --staged"
 	},
@@ -37,8 +41,16 @@
 		"husky": "^4.2.5",
 		"jest": "^26.0.1",
 		"lint-staged": "^10.2.2",
+		"nodemon": "^2.0.4",
 		"prettier": "^2.0.5",
 		"pretty-quick": "^2.0.1",
 		"supertest": "^4.0.2"
+	},
+	"dependencies": {
+		"bcryptjs": "^2.4.3",
+		"dotenv": "^8.2.0",
+		"express": "^4.17.1",
+		"jsonwebtoken": "^8.5.1",
+		"pg": "^8.2.1"
 	}
 }
