@@ -1,6 +1,9 @@
 {
 	"name": "flashcard-api",
 	"version": "1.0.0",
+	"engines": {
+		"node": "13.12.x"
+	},
 	"description": "",
 	"main": "server.js",
 	"scripts": {
