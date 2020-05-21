@@ -1,17 +1,20 @@
+/* eslint-disable consistent-return */
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const getUser = require('../../model/getUser.js');
 const { errNow } = require('../../utils.js');
 
 function login(req, res, next) {
-	// Fail if we don't have the necessary parameters
+	// Return early with error if we don't have the necessary parameters
 	if (
 		!req.body.email ||
 		req.body.email.length < 1 ||
 		!req.body.password ||
 		req.body.password.length < 1
 	) {
-		next(errNow(400, 'Missing email or password', 'handlers/users/login'));
+		return next(
+			errNow(400, 'Missing email or password', 'handlers/users/login'),
+		);
 	}
 
 	getUser({ email: req.body.email })

@@ -15,12 +15,15 @@ function verifyUser(req, res, next) {
 			// if verification fails JWT throws an error, hence the try/catch
 			const tokenData = jwt.verify(token, secret);
 			req.token = tokenData;
+			// console.log('HERE IS THE TOKEN DATA', req.token);
+			next();
 		} catch (_) {
 			// we don't use the caught error, since we know it came from jwt.verify
 			const error = new Error('Unauthorized');
 			error.status = 401;
 			next(error);
 		}
+		// console.log('AUTHY AUTHY AUTH AUTH');
 	}
 }
 

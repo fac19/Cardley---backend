@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint no-param-reassign: ["error", { "props": true, "ignorePropertyModificationsFor": ["err"] }] */
 
 const bcrypt = require('bcryptjs');
@@ -7,17 +8,20 @@ require('dotenv').config();
 const { errNow } = require('../../utils.js');
 
 function signup(req, res, next) {
-	// Fail if we don't have the necessary parameters
-	// OR if they are too short
+	// Return early with error if we don't have the necessary parameters
+	// OR if they are too short, or email doesn't look like an email
 	if (
 		!req.body.email ||
 		req.body.email.length < 1 ||
+		!/(.+)@(.+){2,}\.(.+){2,}/.test(req.body.email) ||
 		!req.body.password ||
 		req.body.password.length < 1 ||
 		!req.body.name ||
 		req.body.name.length < 1
 	) {
-		next(errNow(400, 'Missing email or password', 'handlers/users/login'));
+		return next(
+			errNow(400, 'Missing email or password', 'handlers/users/login'),
+		);
 	}
 
 	// Create a new bcrypt slug from the provided password
