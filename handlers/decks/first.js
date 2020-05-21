@@ -14,7 +14,12 @@ function getFirst(req, res, next) {
 
 			// Step 3. Use that card_id to get the card
 			const card = await getCard({ cardId });
-			res.status(200).send(card);
+
+			res.status(200).send({
+				current_position: 0,
+				deck_length: ordering.length,
+				card,
+			});
 		})
 		.catch(next);
 }

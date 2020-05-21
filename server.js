@@ -10,6 +10,7 @@ const login = require('./handlers/users/login.js');
 const getPublic = require('./handlers/decks/getPublic.js');
 const getDecks = require('./handlers/decks/get.js');
 const getFirst = require('./handlers/decks/first.js');
+const place = require('./handlers/place.js');
 
 const PORT = process.env.PORT || 3000;
 const server = express();
@@ -21,6 +22,7 @@ server.post('/login', login);
 server.get('/public-decks', getPublic);
 server.get('/decks', getDecks);
 server.get('/decks/first/:deck_id', auth, getFirst);
+server.post('/place', auth, place);
 
 server.use(handleError);
 

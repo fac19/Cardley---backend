@@ -220,6 +220,7 @@ test('handler /login, bad email, good password', async () => {
 
 test('handler /login, empty field', async () => {
 	await build();
+
 	// Sign up for an account
 	await supertest(server)
 		.post('/signup')
@@ -248,6 +249,7 @@ test('handler /login, empty field', async () => {
 // /decks/first/:deck_id
 test('handler /decks/first/:deck_id', async () => {
 	await build();
+
 	const deckId = await getDeckIdByName('French Vocab');
 	// Log in and get token
 	const login = await supertest(server)
@@ -268,9 +270,55 @@ test('handler /decks/first/:deck_id', async () => {
 		})
 		.expect(200)
 		.expect('content-type', 'application/json; charset=utf-8');
-	expect(res.body.front_text).toBe('window');
+	expect(res.body.card.front_text).toBe('window');
+	expect(res.body.current_position).toBe(0);
+	expect(res.body.deck_length).toBeDefined();
+	expect(typeof res.body.deck_length).toBe(typeof 1);
+});
 
-	// { card_id, deck_id, front_text, front_image, back_text, back_image, important, color }
+test('handler /place, happy path', async () => {
+	await build();
+
+	// Log into that account
+	const login = await supertest(server)
+		.post('/login')
+		.send({
+			password: 'password',
+			email: 'admin@iscool.com',
+		})
+		// .expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	const cardRecord = await supertest(server)
+		.post('/place')
+		.set({
+			Authorization: `Bearer ${login.body.token}`,
+		})
+		.send({
+			deck_id: 1,
+			card_id: 0, // TODO if we use this we need to update place
+			place: 4,
+			next_deck: 2,
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// console.log('CARD RECORD:', cardRecord);
+	const { card } = cardRecord.body;
+	expect(card.card_id).toBeDefined();
+	expect(card.deck_id).toBeDefined();
+	expect(card.front_text).toBeDefined();
+	expect(card.front_image).toBeDefined();
+	expect(card.back_text).toBeDefined();
+	expect(card.back_image).toBeDefined();
+	expect(card.important).toBeDefined();
+	expect(card.color).toBeDefined();
+	expect(cardRecord.body.current_position).toBe(0);
+	expect(typeof cardRecord.body.deck_length).toBe(typeof 1);
+	// // We expect the first card in our ordering of deck
+	// // 2 (ES6 APIs) to have been returned.
+	// // -> What are the parameters to fetch?
+	expect(card.front_text).toBe('What are the parameters to fetch?');
 });
 
 // ends the connection to the pool (so that the tests can end their process)
