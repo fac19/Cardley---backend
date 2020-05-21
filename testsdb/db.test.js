@@ -315,10 +315,15 @@ test('handler /place, happy path', async () => {
 	expect(card.color).toBeDefined();
 	expect(cardRecord.body.current_position).toBe(0);
 	expect(typeof cardRecord.body.deck_length).toBe(typeof 1);
-	// // We expect the first card in our ordering of deck
-	// // 2 (ES6 APIs) to have been returned.
-	// // -> What are the parameters to fetch?
 	expect(card.front_text).toBe('What are the parameters to fetch?');
+
+	// We also need to verify the card has been put back in the right place!
+	// We also need to verify the card has been put back in the right place!
+	// We also need to verify the card has been put back in the right place!
+
+	const ordering = await getOrdering({ userId: 1, deckId: 1 });
+	console.log('ORDERING:', ordering);
+	expect(ordering).toBe(JSON.stringify([2, 4, 5, 1]));
 });
 
 // ends the connection to the pool (so that the tests can end their process)

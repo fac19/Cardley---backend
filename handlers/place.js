@@ -11,22 +11,30 @@ function place(req, res, next) {
 	const userId = req.token.user_id;
 	const newPlace = req.body.place;
 
-	// get ordering of deck from previous card, for reinsertion
+	// Get the order of this deck for this user as it is now
 	getOrdering({
 		deckId,
 		userId,
 	})
 		.then(async (orderingJSON) => {
+			// It is a JSON string so decode it.
+			// Take the card from the front of the deck
+			// and insert it back at the specified index.
 			const ordering = JSON.parse(orderingJSON);
 			const firstCard = ordering.shift();
-			// splice for new ordering
 			ordering.splice(newPlace, 0, firstCard);
-			// update ordering of collection for previous card
-			await updateOrdering(userId, deckId, JSON.stringify(ordering));
 
-			// We now need to return a next card
-			// this might be from a different deck though
-			// so we need to get the ordering again.
+			// Save this ordering to the database
+			await updateOrdering({
+				userId,
+				deckId,
+				newOrdering: JSON.stringify(ordering),
+			});
+
+			// We now need to return the next card.
+			// This might be from a different deck though
+			// so we need to get the ordering again using
+			// the deck_id nextDeck then get the 0th card_id
 
 			const newOrdering = await getOrdering({
 				deckId: nextDeck,
@@ -34,7 +42,7 @@ function place(req, res, next) {
 			});
 			const newCardId = JSON.parse(newOrdering)[0];
 
-			// We then use that card_id to get and return the card
+			// We then return that card
 			const card = await getCard({ cardId: newCardId });
 			res.status(200).send({
 				current_position: 0,
