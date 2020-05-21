@@ -5,6 +5,12 @@ const server = require('../server');
 
 const createUser = require('../model/createUser');
 const getUser = require('../model/getUser');
+const get = require('../model/get');
+const getOrdering = require('../model/getOrdering');
+const getCard = require('../model/getCard');
+
+const { getDeckIdByName } = require('../model/helpers');
+const { getUserIdByName } = require('../model/helpers');
 
 test('Database builds with test fixtures', () => {
 	return build().then(() => {
@@ -37,6 +43,53 @@ test('model getUser - check we can get a user record by email', () => {
 			expect(res.password_slug.length).toBeGreaterThan(10);
 		});
 	});
+});
+
+test('model getCard - check we can get a card by card_id', async () => {
+	await build();
+	const params = { cardId: 1 };
+	const card = await getCard(params);
+
+	expect(card.card_id).toBeDefined();
+	expect(card.deck_id).toBeDefined();
+	expect(card.front_text).toBeDefined();
+	expect(card.front_image).toBeDefined();
+	expect(card.back_text).toBeDefined();
+	expect(card.back_image).toBeDefined();
+	expect(card.important).toBeDefined();
+	expect(card.color).toBeDefined();
+
+	expect(card.front_text).toBe('window');
+});
+
+test('model get - check model returns a list of decks', () => {
+	return build().then(() => {
+		const params = {
+			user_id: 1,
+		};
+		return get(params).then((res) => {
+			expect(Array.isArray(res)).toBe(true);
+			expect(res.length > 1).toBe(true);
+			expect(res[0].user_name).toBe('admin');
+			expect(
+				res[0].deck_name === 'French Vocab' ||
+					res[0].deck_name === 'ES6 APIs',
+			).toBe(true);
+			expect(typeof res[0].deck_id).toBe(typeof 1);
+		});
+	});
+});
+
+// Prettier insists on reformatting it to be >80 chars long!
+// eslint-disable-next-line max-len
+test('model getOrdering - check we can get an ordering by user_id', async () => {
+	await build();
+	const userId = await getUserIdByName('admin');
+	const deckId = await getDeckIdByName('French Vocab');
+	// console.log('THE IDS:', userId, deckId);
+	const ordering = await getOrdering({ userId, deckId });
+	// console.log('ORDERING:', ordering);
+	expect(ordering).toBe(JSON.stringify([1, 2, 4, 5]));
 });
 
 // HANDLERS
@@ -79,8 +132,10 @@ test('handler /public-decks, happy path', async () => {
 		.get('/public-decks')
 		.expect(200)
 		.expect('content-type', 'application/json; charset=utf-8');
-	expect(res.body[0].user_name).toBe('admin');
-	expect(res.body[0].deck_name).toBe('ES6 APIs');
+	const userNames = res.body.map((v) => v.user_name);
+	const deckNames = res.body.map((v) => v.deck_name);
+	expect(userNames.includes('admin')).toBe(true);
+	expect(deckNames.includes('ES6 APIs')).toBe(true);
 });
 
 test('handler /login, happy path', async () => {
@@ -188,6 +243,34 @@ test('handler /login, empty field', async () => {
 
 	expect(login.body.error).toBe('Missing email or password');
 	expect(login.body.code).toBe(400);
+});
+
+// /decks/first/:deck_id
+test('handler /decks/first/:deck_id', async () => {
+	await build();
+	const deckId = await getDeckIdByName('French Vocab');
+	// Log in and get token
+	const login = await supertest(server)
+		.post('/login')
+		.send({
+			password: 'password',
+			email: 'admin@iscool.com',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+	expect(login.body.token).toBeDefined();
+
+	// Now we can make our get request with the auth header
+	const res = await supertest(server)
+		.get(`/decks/first/${deckId}`)
+		.set({
+			Authorization: `Bearer ${login.body.token}`,
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+	expect(res.body.front_text).toBe('window');
+
+	// { card_id, deck_id, front_text, front_image, back_text, back_image, important, color }
 });
 
 // ends the connection to the pool (so that the tests can end their process)
