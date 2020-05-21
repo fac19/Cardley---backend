@@ -20,7 +20,7 @@ server.use(cors());
 server.post('/signup', signup);
 server.post('/login', login);
 server.get('/public-decks', getPublic);
-server.get('/decks', getDecks);
+server.get('/decks', auth, getDecks);
 server.get('/decks/first/:deck_id', auth, getFirst);
 server.post('/place', auth, place);
 
