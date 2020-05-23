@@ -1,3 +1,5 @@
+![build status](https://travis-ci.com/Ivo-Evans/Cardley---backend.svg?branch=master)
+
 Cardley API
 
 1. To install clone the following repo and install with `npm i`
