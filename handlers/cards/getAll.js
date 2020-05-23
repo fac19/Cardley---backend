@@ -9,7 +9,3 @@ function getCardsInDeck(req, res, next) {
 }
 
 module.exports = getCardsInDeck;
-
-// add check for user id - user should only be able to get deck if they are subscribed to it?? Can Vatsal see Gregor's deck? I guess this is something we haven't discussed.
-// write test
-// adjust documentation: search param
