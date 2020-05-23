@@ -11,6 +11,7 @@
 		"debug": "LOGGING=VERBOSE nodemon server.js",
 		"test": "TESTING=TRUE jest tests/*.test.js",
 		"testdb": "TESTING=TRUE jest -i testsdb/*.test.js",
+		"travistestdb": "TESTING=TRUE TESTDATABASE=travis_ci_test SECRET=secret PGPASSWORD=password jest -i testsdb/*.test.js",
 		"initdb": "node db/build.js",
 		"lint": "eslint .",
 		"prettify": "pretty-quick --staged"
