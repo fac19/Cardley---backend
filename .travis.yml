@@ -7,8 +7,6 @@ install:
 
 before_script:
   - psql -c "create database travis_ci_test;" -U postgres
-  - psql -c "create user tester_bot with password 'password';" -U postgres
-  - psql -c "grant all privileges on database travis_ci_test to tester_bot" -U postgres
 
 script:
   - npm run initdb && npm run travistestdb
