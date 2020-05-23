@@ -329,8 +329,28 @@ test('handler /place, happy path', async () => {
 	// We also need to verify the card has been put back in the right place!
 
 	const ordering = await getOrdering({ userId: 1, deckId: 1 });
-	console.log('ORDERING:', ordering);
+	// console.log('ORDERING:', ordering);
 	expect(ordering).toBe(JSON.stringify([2, 4, 5, 1]));
+});
+
+test('handler cards/deck/:id can get all cards in a deck', async () => {
+	const login = await supertest(server)
+		.post('/login')
+		.send({
+			password: 'password',
+			email: 'admin@iscool.com',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	const cards = await supertest(server)
+		.get('/cards/deck/1')
+		.set('Authorization', `Bearer ${login.body.token}`)
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	expect(cards.body.length).toBe(4);
+	expect(cards.body.every((card) => card.deck_id === 1));
 });
 
 // ends the connection to the pool (so that the tests can end their process)
