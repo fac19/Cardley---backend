@@ -8,6 +8,7 @@ const getUser = require('../model/getUser');
 const get = require('../model/get');
 const getOrdering = require('../model/getOrdering');
 const getCard = require('../model/getCard');
+const getCardsInDeck = require('../model/getCardsInDeck');
 
 const { getDeckIdByName } = require('../model/helpers');
 const { getUserIdByName } = require('../model/helpers');
@@ -90,6 +91,12 @@ test('model getOrdering - check we can get an ordering by user_id', async () => 
 	const ordering = await getOrdering({ userId, deckId });
 	// console.log('ORDERING:', ordering);
 	expect(ordering).toBe(JSON.stringify([1, 2, 4, 5]));
+});
+
+test('model getCardsInDeck - can get all cards in a given deck', async () => {
+	await build();
+	const cardsInDeck = await getCardsInDeck(1);
+	expect(cardsInDeck.rows.length).toBe(4);
 });
 
 // HANDLERS
