@@ -9,8 +9,7 @@ const get = require('../model/get');
 const getOrdering = require('../model/getOrdering');
 const getCard = require('../model/getCard');
 
-const { getDeckIdByName } = require('../model/helpers');
-const { getUserIdByName } = require('../model/helpers');
+const helpers = require('../model/helpers');
 
 test('Database builds with test fixtures', () => {
 	return build().then(() => {
@@ -84,12 +83,26 @@ test('model get - check model returns a list of decks', () => {
 // eslint-disable-next-line max-len
 test('model getOrdering - check we can get an ordering by user_id', async () => {
 	await build();
-	const userId = await getUserIdByName('admin');
-	const deckId = await getDeckIdByName('French Vocab');
+	const userId = await helpers.getUserIdByName('admin');
+	const deckId = await helpers.getDeckIdByName('French Vocab');
 	// console.log('THE IDS:', userId, deckId);
 	const ordering = await getOrdering({ userId, deckId });
 	// console.log('ORDERING:', ordering);
 	expect(ordering).toBe(JSON.stringify([1, 2, 4, 5]));
+});
+
+test('model canReadCardOrDie - happy path', async () => {
+	await build();
+	const userId = await helpers.getUserIdByName('admin');
+	return expect(helpers.canReadCardOrDie(2, userId)).resolves;
+});
+
+test('model canReadCardOrDie - check we die if we should', async () => {
+	await build();
+	const userId = await helpers.getUserIdByName('tom');
+	return expect(helpers.canReadCardOrDie(2, userId)).rejects.toThrowError(
+		"Card doesn't exist or you don't have permission to see it",
+	);
 });
 
 // HANDLERS
@@ -246,11 +259,13 @@ test('handler /login, empty field', async () => {
 	expect(login.body.code).toBe(400);
 });
 
-// /decks/first/:deck_id
-test('handler /decks/first/:deck_id', async () => {
+// /decks/first/:deck_id - logged in as correct user for deck
+// /decks/first/:deck_id - logged in as correct user for deck
+// /decks/first/:deck_id - logged in as correct user for deck
+test('handler /decks/first/:deck_id - correct user', async () => {
 	await build();
 
-	const deckId = await getDeckIdByName('French Vocab');
+	const deckId = await helpers.getDeckIdByName('French Vocab');
 	// Log in and get token
 	const login = await supertest(server)
 		.post('/login')
@@ -276,6 +291,74 @@ test('handler /decks/first/:deck_id', async () => {
 	expect(typeof res.body.deck_length).toBe(typeof 1);
 });
 
+// /decks/first/:deck_id - logged in as WRONG user for deck
+// /decks/first/:deck_id - logged in as WRONG user for deck
+// /decks/first/:deck_id - logged in as WRONG user for deck
+test('handler /decks/first/:deck_id - wrong user', async () => {
+	await build();
+
+	const deckId = await helpers.getDeckIdByName('French Vocab');
+	// Log in and get token
+	const login = await supertest(server)
+		.post('/login')
+		.send({
+			password: 'password',
+			email: 'tom@iscool.com',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+	expect(login.body.token).toBeDefined();
+
+	// Now we can make our get request with the auth header
+	const res = await supertest(server)
+		.get(`/decks/first/${deckId}`)
+		.set({
+			Authorization: `Bearer ${login.body.token}`,
+		})
+		.expect(401)
+		.expect('content-type', 'application/json; charset=utf-8');
+	expect(res.body.code).toBe(401);
+	expect(res.body.error).toBe(
+		"Deck doesn't exist or you don't have permission to see it",
+	);
+});
+
+// Auth only route - not logged in
+// Auth only route - not logged in
+// Auth only route - not logged in
+test('Auth only route - not logged in', async () => {
+	await build();
+	const deckId = await helpers.getDeckIdByName('French Vocab');
+	// Make get request without auth header
+	const res = await supertest(server)
+		.get(`/decks/first/${deckId}`)
+		.expect('content-type', 'application/json; charset=utf-8')
+		.expect(401);
+	expect(res.body.code).toBe(401);
+	expect(res.body.error).toBe('Authorization header is required');
+});
+
+// Auth only route - invalid jwt
+// Auth only route - invalid jwt
+// Auth only route - invalid jwt
+test('Auth only route - invalid jwt', async () => {
+	await build();
+	const deckId = await helpers.getDeckIdByName('French Vocab');
+	// Make get request with bad token in auth header
+	const res = await supertest(server)
+		.get(`/decks/first/${deckId}`)
+		.set({
+			Authorization: `Bearer qwertyuiopasdf`,
+		})
+		.expect('content-type', 'application/json; charset=utf-8')
+		.expect(401);
+	expect(res.body.code).toBe(401);
+	expect(res.body.error).toBe('Unauthorized: invalid token');
+});
+
+// /decks/place - logged in as correct user for deck
+// /decks/place - logged in as correct user for deck
+// /decks/place - logged in as correct user for deck
 test('handler /place, happy path', async () => {
 	await build();
 
@@ -322,7 +405,6 @@ test('handler /place, happy path', async () => {
 	// We also need to verify the card has been put back in the right place!
 
 	const ordering = await getOrdering({ userId: 1, deckId: 1 });
-	console.log('ORDERING:', ordering);
 	expect(ordering).toBe(JSON.stringify([2, 4, 5, 1]));
 });
 
