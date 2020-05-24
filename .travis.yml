@@ -10,7 +10,9 @@ before_script:
 
 script:
   - npm run initdb && npm run travistestdb
-  - npm run test
+
+after-script:
+  - bash <(curl -s https://codecov.io/bash)
 
 services:
   - postgresql
