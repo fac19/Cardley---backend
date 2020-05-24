@@ -73,6 +73,34 @@ function canReadCardOrDie(cardId, userId) {
 }
 
 // carWriteCardOrDie
+function canWriteCardOrDie(cardId, userId) {
+	return db
+		.query(
+			`
+			SELECT
+				decks.owner_id, decks.published
+			FROM
+				decks
+			INNER JOIN
+				cards
+			ON
+			    cards.deck_id = decks.deck_id
+			WHERE
+				cards.card_id = $1
+			`,
+			[cardId],
+		)
+		.then(({ rows }) => {
+			if (!rows || rows[0].owner_id !== userId) {
+				throw errNow(
+					401,
+					// eslint-disable-next-line max-len
+					"Card doesn't exist or you don't have permission to write it",
+					'helpers/canWriteCardOrDie',
+				);
+			}
+		});
+}
 
 module.exports = {
 	getDeckIdByName,
@@ -80,4 +108,5 @@ module.exports = {
 	canReadDeckOrDie,
 	canWriteDeckOrDie,
 	canReadCardOrDie,
+	canWriteCardOrDie,
 };

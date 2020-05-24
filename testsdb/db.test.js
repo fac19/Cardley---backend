@@ -97,11 +97,25 @@ test('model canReadCardOrDie - happy path', async () => {
 	return expect(helpers.canReadCardOrDie(2, userId)).resolves;
 });
 
-test('model canReadCardOrDie - check we die if we should', async () => {
+test('model canReadCardOrDie - wrong user', async () => {
 	await build();
 	const userId = await helpers.getUserIdByName('tom');
 	return expect(helpers.canReadCardOrDie(2, userId)).rejects.toThrowError(
 		"Card doesn't exist or you don't have permission to see it",
+	);
+});
+
+test('model canWriteCardOrDie - happy path', async () => {
+	await build();
+	const userId = await helpers.getUserIdByName('admin');
+	return expect(helpers.canWriteCardOrDie(2, userId)).resolves;
+});
+
+test('model canWriteCardOrDie - wrong user', async () => {
+	await build();
+	const userId = await helpers.getUserIdByName('tom');
+	return expect(helpers.canWriteCardOrDie(2, userId)).rejects.toThrowError(
+		"Card doesn't exist or you don't have permission to write it",
 	);
 });
 
