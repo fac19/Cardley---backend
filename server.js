@@ -10,6 +10,7 @@ const login = require('./handlers/users/login.js');
 const getPublic = require('./handlers/decks/getPublic.js');
 const getDecks = require('./handlers/decks/get.js');
 const getFirst = require('./handlers/decks/first.js');
+const postDeck = require('./handlers/decks/create.js');
 const place = require('./handlers/place.js');
 const getCardsInDeck = require('./handlers/cards/getAll.js');
 
@@ -23,6 +24,7 @@ server.post('/login', login);
 server.get('/public-decks', getPublic);
 server.get('/decks', auth, getDecks);
 server.get('/decks/first/:deck_id', auth, getFirst);
+server.post('/decks/:deck_name', auth, postDeck);
 server.get('/cards/deck/:deck_id', auth, getCardsInDeck);
 server.post('/place', auth, place);
 

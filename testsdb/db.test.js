@@ -8,6 +8,8 @@ const getUser = require('../model/getUser');
 const get = require('../model/get');
 const getOrdering = require('../model/getOrdering');
 const getCard = require('../model/getCard');
+const addDeck = require('../model/addDeck');
+const addCollection = require('../model/addCollection');
 const getCardsInDeck = require('../model/getCardsInDeck');
 
 const helpers = require('../model/helpers');
@@ -124,6 +126,25 @@ test('model canWriteCardOrDie - wrong user', async () => {
 	return expect(helpers.canWriteCardOrDie(2, userId)).rejects.toThrowError(
 		"Card doesn't exist or you don't have permission to write it",
 	);
+});
+
+test('model addDeck returns a number', async () => {
+	await build();
+	const deckId = await addDeck({
+		ownerId: '1',
+		deckName: "tom's deck",
+		published: true,
+	});
+	expect(typeof deckId.deck_id).toBe('number');
+});
+
+test('model addCollection adds a collection', async () => {
+	await build();
+	const userId = 2;
+	const deckId = 4;
+
+	const ordering = await addCollection({ userId, deckId });
+	expect(ordering.rows[0].ordering).toBe('[]');
 });
 
 // HANDLERS
@@ -430,28 +451,6 @@ test('handler /place, happy path', async () => {
 });
 
 test(`handler cards/deck/:id
-can get all cards in own private deck`, async () => {
-	await build();
-	const login = await supertest(server)
-		.post('/login')
-		.send({
-			password: 'password',
-			email: 'admin@iscool.com',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
-
-	const cards = await supertest(server)
-		.get('/cards/deck/1')
-		.set('Authorization', `Bearer ${login.body.token}`)
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
-
-	expect(cards.body.length).toBe(4);
-	expect(cards.body.every((card) => card.deck_id === 1)).toBe(true);
-});
-
-test(`handler cards/deck/:id
 cannot access a private deck of another user`, async () => {
 	await build();
 
@@ -474,6 +473,49 @@ cannot access a private deck of another user`, async () => {
 		"Deck doesn't exist or you don't have permission to see it",
 	);
 	expect(cards.body.code).toBe(401);
+});
+
+test(`handler /decks/:name
+authenticated user can add deck,
+and this adds a collection and deck belonging to the user`, async () => {
+	const admin = await supertest(server)
+		.post('/login')
+		.send({
+			email: 'admin@iscool.com',
+			password: 'password',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// console.log(admin.body.token)
+
+	const newDeck = await supertest(server)
+		.post('/decks/test-deck')
+		.set({
+			Authorization: `Bearer ${admin.body.token}`,
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	const newDeckId = newDeck.body.deck_id;
+
+	const collection = await db.query(
+		`SELECT
+			collection_id
+		FROM
+			collections
+		WHERE
+			user_id = ${1} AND deck_id = ${newDeckId}`,
+	);
+
+	const newCollectionId = collection.rows[0].collection_id;
+
+	const deck = await db
+		.query(`select owner_id from decks where deck_id = ${newDeckId}`)
+		.then((res) => res.rows[0]);
+	expect(typeof newCollectionId).toBe('number');
+	expect(deck.owner_id).toBe(1);
+	// see whether collection and deck were succesfully added
 });
 
 // ends the connection to the pool (so that the tests can end their process)

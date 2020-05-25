@@ -8,20 +8,21 @@ BEGIN;
 		('tom', 'tom@iscool.com', '$2a$10$fFI3n2FQzODKlE6SU5Cy1OydfwgA24BepGmWxarDt8wsGk92DebW.');
 
 	-- DECKS TABLE
+	-- published=true means it is public, published=false means it is private.
 	INSERT INTO decks
-		(deck_id, owner_id, deck_name, published)
+		(owner_id, deck_name, published)
 	VALUES
-		(1, 1, 'French Vocab', false),
-		(2, 1, 'ES6 APIs', true),
-		(3, 2, 'Capital Cities', true);
+		(1, 'French Vocab', false),
+		(1, 'ES6 APIs', true),
+		(2, 'Capital Cities', true),
+		(1, 'Music', true);
 
 	-- CARDS TABLE
 	INSERT INTO cards
-		( card_id, deck_id, front_text, front_image, back_text, back_image, important, color)
+		( deck_id, front_text, front_image, back_text, back_image, important, color)
 
 	VALUES
-		(1,
-			1,
+		(	1,
 			'window',
 			'https://images-na.ssl-images-amazon.com/images/I/614IJG4EIcL._AC_SX425_.jpg',
 			'fenêtre',
@@ -29,8 +30,7 @@ BEGIN;
 			false,
 			'rgb(160,149,144)'
 		),
-		(2,
-			1,
+		(	1,
 			'bed',
 			'http://t0.gstatic.com/images?q=tbn:ANd9GcSuAm_C-ktaK_ZxXxZlMSqE_JvM1QULef5F91fK1QFOF2SGVeTVLP2x9VTmvFn493RkXQdJokbt5sp0MzvaEWk',
 			'lit',
@@ -38,8 +38,7 @@ BEGIN;
 			true,
 			'rgb(174,232,143)'
 		),
-		(3,
-			2,
+		( 2,
 			'What are the parameters to fetch?',
 			null,
 			'1. The path to the resource you want\n2.An options/init object.',
@@ -47,8 +46,7 @@ BEGIN;
 			false,
 			'rgb(174,232,143)'
 		),
-		(4,
-			1,
+		(	1,
 			'car',
 			null,
 			'voiture',
@@ -56,8 +54,7 @@ BEGIN;
 			false,
 			'rgb(174,232,143)'
 	),
-		(5,
-			1,
+		(	1,
 			'church',
 			null,
 			'église',
@@ -65,8 +62,7 @@ BEGIN;
 			false,
 			'rgb(174,232,143)'
 	),
-		(6,
-			2,
+		(	2,
 			'What are the arguments to .splice?',
 			null,
 			'1. Index to start from\n2. How many elements to delete\n3. An unlimited number of new elements to insert',
@@ -74,8 +70,7 @@ BEGIN;
 			false,
 			'rgb(174,232,143)'
 	),
-		(7,
-			2,
+		( 2,
 			'What is the opposite of "spread syntax"?',
 			null,
 			'\"rest syntax\", used for destructuring',
