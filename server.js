@@ -13,7 +13,7 @@ const getFirst = require('./handlers/decks/first.js');
 const postDeck = require('./handlers/decks/create.js');
 const place = require('./handlers/place.js');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const server = express();
 server.use(express.json());
 server.use(cors());
