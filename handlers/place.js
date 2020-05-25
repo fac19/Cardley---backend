@@ -1,15 +1,30 @@
 const getOrdering = require('../model/getOrdering.js');
 const updateOrdering = require('../model/updateOrdering.js');
 const getCard = require('../model/getCard');
+const { errNow } = require('../utils.js');
 
 /* This function places a card back in it's deck at the index
 specified by the caller with body.place. It then returns the
 first card in the deck specified with body.next_deck */
 function place(req, res, next) {
 	const deckId = Number(req.body.deck_id);
+	if (Number.isNaN(deckId)) {
+		throw errNow(400, 'deck_id must be an integer', 'handlers/place.js');
+	}
 	const nextDeck = Number(req.body.next_deck);
-	const userId = req.token.user_id;
-	const newPlace = req.body.place;
+	if (Number.isNaN(nextDeck)) {
+		throw errNow(400, 'next_deck must be an integer', 'handlers/place.js');
+	}
+	const userId = Number(req.token.user_id);
+	if (Number.isNaN(userId)) {
+		throw errNow(400, 'user_id must be an integer', 'handlers/place.js');
+	}
+	const newPlace = Number(req.body.place);
+	if (Number.isNaN(newPlace)) {
+		throw errNow(400, 'place must be an integer', 'handlers/place.js');
+	}
+	// In theory we also get card_id although right now we are ignoring it and
+	// presuming that we always want to move the card at index 0.
 
 	// Get the order of this deck for this user as it is now
 	getOrdering({
