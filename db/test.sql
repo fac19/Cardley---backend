@@ -8,6 +8,7 @@ BEGIN;
 		('tom', 'tom@iscool.com', '$2a$10$fFI3n2FQzODKlE6SU5Cy1OydfwgA24BepGmWxarDt8wsGk92DebW.');
 
 	-- DECKS TABLE
+	-- published=true means it is public, published=false means it is private.
 	INSERT INTO decks
 		(deck_id, owner_id, deck_name, published)
 	VALUES
