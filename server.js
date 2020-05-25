@@ -11,6 +11,7 @@ const getPublic = require('./handlers/decks/getPublic.js');
 const getDecks = require('./handlers/decks/get.js');
 const getFirst = require('./handlers/decks/first.js');
 const place = require('./handlers/place.js');
+const getCardsInDeck = require('./handlers/cards/getAll.js');
 
 const PORT = process.env.PORT || 3001;
 const server = express();
@@ -22,6 +23,7 @@ server.post('/login', login);
 server.get('/public-decks', getPublic);
 server.get('/decks', auth, getDecks);
 server.get('/decks/first/:deck_id', auth, getFirst);
+server.get('/cards/deck/:deck_id', auth, getCardsInDeck);
 server.post('/place', auth, place);
 
 server.use(handleError);

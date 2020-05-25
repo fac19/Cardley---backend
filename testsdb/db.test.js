@@ -8,6 +8,7 @@ const getUser = require('../model/getUser');
 const get = require('../model/get');
 const getOrdering = require('../model/getOrdering');
 const getCard = require('../model/getCard');
+const getCardsInDeck = require('../model/getCardsInDeck');
 
 const helpers = require('../model/helpers');
 
@@ -89,6 +90,12 @@ test('model getOrdering - check we can get an ordering by user_id', async () => 
 	const ordering = await getOrdering({ userId, deckId });
 	// console.log('ORDERING:', ordering);
 	expect(ordering).toBe(JSON.stringify([1, 2, 4, 5]));
+});
+
+test('model getCardsInDeck - can get all cards in a given deck', async () => {
+	await build();
+	const cardsInDeck = await getCardsInDeck(1);
+	expect(cardsInDeck.rows.length).toBe(4);
 });
 
 test('model canReadCardOrDie - happy path', async () => {
@@ -420,6 +427,53 @@ test('handler /place, happy path', async () => {
 
 	const ordering = await getOrdering({ userId: 1, deckId: 1 });
 	expect(ordering).toBe(JSON.stringify([2, 4, 5, 1]));
+});
+
+test(`handler cards/deck/:id
+can get all cards in own private deck`, async () => {
+	await build();
+	const login = await supertest(server)
+		.post('/login')
+		.send({
+			password: 'password',
+			email: 'admin@iscool.com',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	const cards = await supertest(server)
+		.get('/cards/deck/1')
+		.set('Authorization', `Bearer ${login.body.token}`)
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	expect(cards.body.length).toBe(4);
+	expect(cards.body.every((card) => card.deck_id === 1)).toBe(true);
+});
+
+test(`handler cards/deck/:id
+cannot access a private deck of another user`, async () => {
+	await build();
+
+	const login = await supertest(server)
+		.post('/login')
+		.send({
+			password: 'password',
+			email: 'tom@iscool.com',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	const cards = await supertest(server)
+		.get('/cards/deck/1')
+		.set('Authorization', `Bearer ${login.body.token}`)
+		.expect(401)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	expect(cards.body.error).toBe(
+		"Deck doesn't exist or you don't have permission to see it",
+	);
+	expect(cards.body.code).toBe(401);
 });
 
 // ends the connection to the pool (so that the tests can end their process)
