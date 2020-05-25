@@ -1,6 +1,6 @@
 BEGIN;
 
-	-- USERS TABLE
+	-- USERS TABLE - passwords are password
 	INSERT INTO users
 		(user_name, email, password_slug)
 	VALUES
