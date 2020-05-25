@@ -8,6 +8,8 @@ const getUser = require('../model/getUser');
 const get = require('../model/get');
 const getOrdering = require('../model/getOrdering');
 const getCard = require('../model/getCard');
+const addDeck = require('../model/addDeck');
+const addCollection = require('../model/addCollection');
 
 const helpers = require('../model/helpers');
 
@@ -117,6 +119,25 @@ test('model canWriteCardOrDie - wrong user', async () => {
 	return expect(helpers.canWriteCardOrDie(2, userId)).rejects.toThrowError(
 		"Card doesn't exist or you don't have permission to write it",
 	);
+});
+
+test('model addDeck returns a number', async () => {
+	await build();
+	const deckId = await addDeck({
+		ownerId: '1',
+		deckName: "tom's deck",
+		published: true,
+	});
+	expect(deckId.deck_id).toBe(5);
+});
+
+test('model addCollection adds a collection', async () => {
+	await build();
+	const userId = 2;
+	const deckId = 4;
+
+	const ordering = await addCollection({ userId, deckId });
+	expect(ordering.rows[0].ordering).toBe('[]');
 });
 
 // HANDLERS
@@ -421,6 +442,29 @@ test('handler /place, happy path', async () => {
 	const ordering = await getOrdering({ userId: 1, deckId: 1 });
 	expect(ordering).toBe(JSON.stringify([2, 4, 5, 1]));
 });
+
+// test(`handler /decks/:name authenticated user can add deck, and this adds a collection and deck belonging to the user`, async () => {
+// 	const admin = await supertest(server)
+// 		.post('/login')
+// 		.send({
+// 			email: 'admin@iscool.com',
+// 			password: 'password'
+// 		})
+// 		.expect(200)
+// 		.expect('content-type', 'application/json; charset=utf-8');
+
+// 		console.log(admin.body.token)
+
+// 	const newDeck = await supertest(server)
+// 		.post('/decks/test-deck')
+// 		.set({
+// 			Authorization: `Bearer ${admin.body.token}`
+// 		})
+// 		.expect(200)
+// 		.expect('content-type', 'application/json; charset=utf-8');
+
+// 		console.log(newDeck)
+// })
 
 // ends the connection to the pool (so that the tests can end their process)
 afterAll(() => {
