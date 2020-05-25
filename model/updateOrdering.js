@@ -1,7 +1,6 @@
 const db = require('../db/connection.js');
 
 function updateOrdering({ userId, deckId, newOrdering }) {
-	console.log('model.updateOrdering to be:', newOrdering);
 	return db.query(
 		`
 		UPDATE collections
