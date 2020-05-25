@@ -443,28 +443,48 @@ test('handler /place, happy path', async () => {
 	expect(ordering).toBe(JSON.stringify([2, 4, 5, 1]));
 });
 
-// test(`handler /decks/:name authenticated user can add deck, and this adds a collection and deck belonging to the user`, async () => {
-// 	const admin = await supertest(server)
-// 		.post('/login')
-// 		.send({
-// 			email: 'admin@iscool.com',
-// 			password: 'password'
-// 		})
-// 		.expect(200)
-// 		.expect('content-type', 'application/json; charset=utf-8');
+test(`handler /decks/:name
+authenticated user can add deck,
+and this adds a collection and deck belonging to the user`, async () => {
+	const admin = await supertest(server)
+		.post('/login')
+		.send({
+			email: 'admin@iscool.com',
+			password: 'password',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
 
-// 		console.log(admin.body.token)
+	// console.log(admin.body.token)
 
-// 	const newDeck = await supertest(server)
-// 		.post('/decks/test-deck')
-// 		.set({
-// 			Authorization: `Bearer ${admin.body.token}`
-// 		})
-// 		.expect(200)
-// 		.expect('content-type', 'application/json; charset=utf-8');
+	const newDeck = await supertest(server)
+		.post('/decks/test-deck')
+		.set({
+			Authorization: `Bearer ${admin.body.token}`,
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
 
-// 		console.log(newDeck)
-// })
+	const newDeckId = newDeck.body.deck_id;
+
+	const collection = await db.query(
+		`SELECT
+			collection_id
+		FROM
+			collections
+		WHERE
+			user_id = ${1} AND deck_id = ${newDeckId}`,
+	);
+
+	const newCollectionId = collection.rows[0].collection_id;
+
+	const deck = await db
+		.query(`select owner_id from decks where deck_id = ${newDeckId}`)
+		.then((res) => res.rows[0]);
+	expect(typeof newCollectionId).toBe('number');
+	expect(deck.owner_id).toBe(1);
+	// see whether collection and deck were succesfully added
+});
 
 // ends the connection to the pool (so that the tests can end their process)
 afterAll(() => {

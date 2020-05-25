@@ -15,7 +15,9 @@ async function postDeck(req, res, next) {
 			userId: req.token.user_id,
 		});
 
-		res.status(200).send(String(deckId));
+		res.status(200).send({
+			deck_id: deckId,
+		});
 	} catch (err) {
 		next(err);
 	}
