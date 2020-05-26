@@ -186,11 +186,7 @@ test('model getCollections gets a collection', async () => {
 test('model updateOrdering updates the order for a deck and user', async () => {
 	await build();
 	const newOrdering = JSON.stringify([1, 2, 4]);
-	const returnOrdering = await updateOrdering({
-		userId: 1,
-		deckId: 2,
-		newOrdering,
-	});
+	const returnOrdering = await updateOrdering(1, 2, newOrdering);
 	expect(returnOrdering.length).toBe(1);
 	const collections = await getCollections(returnOrdering[0].deck_id);
 	const filteredCollection = collections.filter(
@@ -569,6 +565,81 @@ test(`handler /decks/:name - logged in user can make deck`, async () => {
 	expect(typeof newCollectionId).toBe('number');
 	expect(deck.owner_id).toBe(1);
 	// see whether collection and deck were succesfully added
+});
+
+// Authenticated user can add a card to a deck they are the owner of.
+// The added card is also added at the front of all deck orderings
+// for that deck.
+test.skip(`handler /cards/:deck_id - can add card to own deck`, async () => {
+	// DONT KNOW IF THIS TEST IS WORKING
+
+	// Authenticated user
+	const admin = await supertest(server)
+		.post('/login')
+		.send({
+			email: 'admin@iscool.com',
+			password: 'password',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// can add a card to a deck they are the owner of.
+	// Admin is the owner of "ES6 APIs"
+	const deckId = helpers.getDeckIdByName('ES6 APIs');
+
+	const newCard = await supertest(server)
+		.post(`/cards/${deckId}`)
+		.set({
+			Authorization: `Bearer ${admin.body.token}`,
+		})
+		.send({
+			front_text: 'this is the front text',
+			front_image: 'this is a dummy front image url',
+			back_text: 'this is the back text',
+			back_image: 'this is a dummy back image url',
+			important: true,
+			color: '#1F6',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	console.log('newCard response length:', newCard.length); // Is big horrible object
+
+	// expect(deck.owner_id).toBe(1);
+	// see whether collection and deck were succesfully added
+});
+
+// Dont know if this test is working! (havent written the handler for this yet (or the models))
+// test.skip(`handler /decks/import/:deck-id updates your collection with the deck id you chose`, async ()=>{
+test.skip(`handler /decks/import/:deck-id add public decks`, async () => {
+	const userId = 1;
+	const requestDeckId = 2;
+	const decksInitially = await get({ user_id: userId });
+	const numberOfDecksInitially = decksInitially.length;
+
+	const login = await supertest(server)
+		.post('/login')
+		.send({
+			email: 'admin@iscool.com',
+			password: 'password',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// const newCollection = await supertest(server)
+	await supertest(server)
+		.post(`/decks/import/${requestDeckId}`)
+		.set({
+			Authorization: `Bearer ${login.body.token}`,
+		})
+		.send({}) // dont need to send anything as can get req.params.deck_id and user info from jwt
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	const decksNow = await get({ user_id: userId });
+	const numberOfDecksFinally = decksNow.length;
+
+	expect(numberOfDecksFinally).toBe(numberOfDecksInitially + 1);
 });
 
 // ends the connection to the pool (so that the tests can end their process)

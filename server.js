@@ -11,10 +11,10 @@ const login = require('./handlers/users/login.js');
 const getPublic = require('./handlers/decks/getPublic.js');
 const getDecks = require('./handlers/decks/get.js');
 const getFirst = require('./handlers/decks/first.js');
-const postDeck = require('./handlers/decks/create.js');
+const postDeck = require('./handlers/decks/createDeck.js');
 const place = require('./handlers/place.js');
 const getCardsInDeck = require('./handlers/cards/getAll.js');
-const addCard = require('./handlers/cards/add.js');
+const createCard = require('./handlers/cards/createCard.js');
 
 const PORT = process.env.PORT || 3001;
 const server = express();
@@ -33,7 +33,7 @@ server.get('/decks/first/:deck_id', auth, getFirst);
 server.post('/decks/:deck_name', auth, postDeck);
 server.get('/cards/deck/:deck_id', auth, getCardsInDeck);
 server.post('/place', auth, place);
-server.post('/cards/:deck_id', auth, addCard);
+server.post('/cards/:deck_id', auth, createCard);
 
 server.use(handleError);
 
