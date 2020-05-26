@@ -22,7 +22,7 @@ function updateOrdering(userId, deckId, newOrdering) {
 					'models/updateOrdering result.rows !== 1',
 				);
 			}
-			return result.rows;
+			return true;
 		});
 }
 

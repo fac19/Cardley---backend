@@ -1,9 +1,9 @@
 const db = require('../db/connection.js');
 
-function getCollections(deckId) {
+function getCollectionsByDeck(deckId) {
 	return db
 		.query(`SELECT * FROM collections WHERE deck_id=($1)`, [deckId])
 		.then((result) => result.rows);
 }
 
-module.exports = getCollections;
+module.exports = getCollectionsByDeck;
