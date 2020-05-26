@@ -1,6 +1,9 @@
 /* eslint-disable no-else-return */
 const db = require('../db/connection.js');
 
+// TODO We have permission checking happen elsewhere nows
+// So refactor to use a single integer as it's parameter
+// and get rid of the if/else.
 function getCard({ cardId, enforceOwner = false }) {
 	if (!enforceOwner) {
 		return db

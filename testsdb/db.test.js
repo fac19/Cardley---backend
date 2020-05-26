@@ -11,6 +11,9 @@ const getCard = require('../model/getCard');
 const addDeck = require('../model/addDeck');
 const addCollection = require('../model/addCollection');
 const getCardsInDeck = require('../model/getCardsInDeck');
+const getCollections = require('../model/getCollections');
+const updateOrdering = require('../model/updateOrdering');
+const addCard = require('../model/addCard');
 
 const helpers = require('../model/helpers');
 
@@ -82,6 +85,8 @@ test('model get - check model returns a list of decks', () => {
 	});
 });
 
+// addCardModel
+
 // Prettier insists on reformatting it to be >80 chars long!
 // eslint-disable-next-line max-len
 test('model getOrdering - check we can get an ordering by user_id', async () => {
@@ -145,6 +150,54 @@ test('model addCollection adds a collection', async () => {
 
 	const ordering = await addCollection({ userId, deckId });
 	expect(ordering.rows[0].ordering).toBe('[]');
+});
+
+test('model addCard adds a card', async () => {
+	await build();
+	const card = {
+		deckId: '1',
+		front_text: 'front-text',
+		front_image: 'image-url-front',
+		back_image: 'image-url-back',
+		important: true,
+		color: 'black',
+	};
+	const newCard = await addCard(card);
+	const cardId = newCard.card_id;
+	expect(typeof cardId).toBe('number'); // number in string? Vatsal
+
+	const cardWeJustAdded = await getCard({ cardId });
+	expect(cardWeJustAdded.front_image).toBe('image-url-front');
+	expect(cardWeJustAdded.important).toBe(true);
+	expect(cardWeJustAdded.deck_id).toBe(1);
+	expect(cardWeJustAdded.back_text).toBe(null);
+});
+
+test('model getCollections gets a collection', async () => {
+	await build();
+	const deckId = 2;
+	const collections = await getCollections(deckId);
+	expect(Array.isArray(collections)).toBe(true);
+	expect(collections.length >= 2).toBe(true);
+	const decodedCollection = JSON.parse(collections[0].ordering);
+	expect(Array.isArray(decodedCollection)).toBe(true);
+});
+
+test('model updateOrdering updates the order for a deck and user', async () => {
+	await build();
+	const newOrdering = JSON.stringify([1, 2, 4]);
+	const returnOrdering = await updateOrdering({
+		userId: 1,
+		deckId: 2,
+		newOrdering,
+	});
+	expect(returnOrdering.length).toBe(1);
+	const collections = await getCollections(returnOrdering[0].deck_id);
+	const filteredCollection = collections.filter(
+		(collection) => collection.user_id === returnOrdering[0].user_id,
+	);
+	expect(filteredCollection.length).toBe(1);
+	expect(filteredCollection[0].ordering).toBe(newOrdering);
 });
 
 // HANDLERS
@@ -450,8 +503,8 @@ test('handler /place, happy path', async () => {
 	expect(ordering).toBe(JSON.stringify([2, 4, 5, 1]));
 });
 
-test(`handler cards/deck/:id
-cannot access a private deck of another user`, async () => {
+// cannot access a private deck of another user
+test(`handler cards/deck/:id`, async () => {
 	await build();
 
 	const login = await supertest(server)
@@ -475,9 +528,9 @@ cannot access a private deck of another user`, async () => {
 	expect(cards.body.code).toBe(401);
 });
 
-test(`handler /decks/:name
-authenticated user can add deck,
-and this adds a collection and deck belonging to the user`, async () => {
+// authenticated user can add deck,
+// and this adds a collection and deck belonging to the user
+test(`handler /decks/:name - logged in user can make deck`, async () => {
 	const admin = await supertest(server)
 		.post('/login')
 		.send({

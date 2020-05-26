@@ -14,4 +14,5 @@ const db = new pg.Pool({
 	// that value will override the above variables
 	connectionString: process.env.DATABASE_URL,
 });
+
 module.exports = db;
