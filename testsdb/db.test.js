@@ -11,7 +11,8 @@ const getCard = require('../model/getCard');
 const addDeck = require('../model/addDeck');
 const addCollection = require('../model/addCollection');
 const getCardsInDeck = require('../model/getCardsInDeck');
-const getCollections = require('../model/getCollections');
+const getCollectionsByDeck = require('../model/getCollectionsByDeck');
+const getCollectionsByUser = require('../model/getCollectionsByUser');
 const updateOrdering = require('../model/updateOrdering');
 const addCard = require('../model/addCard');
 
@@ -52,8 +53,7 @@ test('model getUser - check we can get a user record by email', () => {
 
 test('model getCard - check we can get a card by card_id', async () => {
 	await build();
-	const params = { cardId: 1 };
-	const card = await getCard(params);
+	const card = await getCard(1);
 
 	expect(card.card_id).toBeDefined();
 	expect(card.deck_id).toBeDefined();
@@ -166,17 +166,17 @@ test('model addCard adds a card', async () => {
 	const cardId = newCard.card_id;
 	expect(typeof cardId).toBe('number'); // number in string? Vatsal
 
-	const cardWeJustAdded = await getCard({ cardId });
+	const cardWeJustAdded = await getCard(cardId);
 	expect(cardWeJustAdded.front_image).toBe('image-url-front');
 	expect(cardWeJustAdded.important).toBe(true);
 	expect(cardWeJustAdded.deck_id).toBe(1);
 	expect(cardWeJustAdded.back_text).toBe(null);
 });
 
-test('model getCollections gets a collection', async () => {
+test('model getCollectionsByDeck gets a collection', async () => {
 	await build();
 	const deckId = 2;
-	const collections = await getCollections(deckId);
+	const collections = await getCollectionsByDeck(deckId);
 	expect(Array.isArray(collections)).toBe(true);
 	expect(collections.length >= 2).toBe(true);
 	const decodedCollection = JSON.parse(collections[0].ordering);
@@ -185,12 +185,14 @@ test('model getCollections gets a collection', async () => {
 
 test('model updateOrdering updates the order for a deck and user', async () => {
 	await build();
-	const newOrdering = JSON.stringify([1, 2, 4]);
-	const returnOrdering = await updateOrdering(1, 2, newOrdering);
-	expect(returnOrdering.length).toBe(1);
-	const collections = await getCollections(returnOrdering[0].deck_id);
+	const userId = 1;
+	const deckId = 2;
+	const newOrdering = JSON.stringify([1, 3, 9, 11, 2, 4]);
+	const didItUpdate = await updateOrdering(userId, deckId, newOrdering);
+	expect(didItUpdate).toBe(true);
+	const collections = await getCollectionsByUser(userId);
 	const filteredCollection = collections.filter(
-		(collection) => collection.user_id === returnOrdering[0].user_id,
+		(collection) => collection.deck_id === deckId,
 	);
 	expect(filteredCollection.length).toBe(1);
 	expect(filteredCollection[0].ordering).toBe(newOrdering);
@@ -527,6 +529,8 @@ test(`handler cards/deck/:id`, async () => {
 // authenticated user can add deck,
 // and this adds a collection and deck belonging to the user
 test(`handler /decks/:name - logged in user can make deck`, async () => {
+	await build();
+
 	const admin = await supertest(server)
 		.post('/login')
 		.send({
@@ -567,51 +571,12 @@ test(`handler /decks/:name - logged in user can make deck`, async () => {
 	// see whether collection and deck were succesfully added
 });
 
-// Authenticated user can add a card to a deck they are the owner of.
-// The added card is also added at the front of all deck orderings
-// for that deck.
-test.skip(`handler /cards/:deck_id - can add card to own deck`, async () => {
-	// DONT KNOW IF THIS TEST IS WORKING
-
-	// Authenticated user
-	const admin = await supertest(server)
-		.post('/login')
-		.send({
-			email: 'admin@iscool.com',
-			password: 'password',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
-
-	// can add a card to a deck they are the owner of.
-	// Admin is the owner of "ES6 APIs"
-	const deckId = helpers.getDeckIdByName('ES6 APIs');
-
-	const newCard = await supertest(server)
-		.post(`/cards/${deckId}`)
-		.set({
-			Authorization: `Bearer ${admin.body.token}`,
-		})
-		.send({
-			front_text: 'this is the front text',
-			front_image: 'this is a dummy front image url',
-			back_text: 'this is the back text',
-			back_image: 'this is a dummy back image url',
-			important: true,
-			color: '#1F6',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
-
-	console.log('newCard response length:', newCard.length); // Is big horrible object
-
-	// expect(deck.owner_id).toBe(1);
-	// see whether collection and deck were succesfully added
-});
-
-// Dont know if this test is working! (havent written the handler for this yet (or the models))
+// Add a public deck to the users collection
+// Don't know if this test is working! (haven't written the handler for this yet (or the models))
 // test.skip(`handler /decks/import/:deck-id updates your collection with the deck id you chose`, async ()=>{
 test.skip(`handler /decks/import/:deck-id add public decks`, async () => {
+	await build();
+
 	const userId = 1;
 	const requestDeckId = 2;
 	const decksInitially = await get({ user_id: userId });
@@ -642,7 +607,197 @@ test.skip(`handler /decks/import/:deck-id add public decks`, async () => {
 	expect(numberOfDecksFinally).toBe(numberOfDecksInitially + 1);
 });
 
-// ends the connection to the pool (so that the tests can end their process)
+// Add a card to one of users decks, happy path...
+// Authenticated user can add a card to a deck they are the owner of.
+// The added card is also added at the front of all deck orderings
+// for that deck.
+test(`handler /cards/:deck_id, add card to own deck, happy path`, async () => {
+	await build();
+
+	// Authenticated user
+	const admin = await supertest(server)
+		.post('/login')
+		.send({
+			email: 'admin@iscool.com',
+			password: 'password',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Can add a card to a deck they are the owner of...
+	// Admin is the owner of "ES6 APIs"
+	const deckId = await helpers.getDeckIdByName('ES6 APIs');
+
+	// Send card to the server
+	// Handler for this route is at /handlers/cards/createCard.js
+	const newCardResponse = await supertest(server)
+		.post(`/cards/${deckId}`)
+		.set({
+			Authorization: `Bearer ${admin.body.token}`,
+		})
+		.send({
+			front_text: 'this is the front text',
+			front_image: 'this is a dummy front image url',
+			back_text: 'this is the back text',
+			back_image: 'this is a dummy back image url',
+			important: true,
+			color: '#1F6',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Check response contains 'created: true' and the new card_id
+	expect(newCardResponse.body.created).toBeDefined();
+	expect(newCardResponse.body.created).toBe(true);
+	expect(newCardResponse.body.card_id).toBeDefined();
+	expect(typeof newCardResponse.body.card_id).toBe(typeof 1);
+	const cardId = newCardResponse.body.card_id;
+
+	// Get the actual card with the returned card_id and
+	// verify it contains what we expect it to
+	const card = await getCard(cardId);
+	expect(card.front_text).toBeDefined();
+	expect(card.front_text).toBe('this is the front text');
+	expect(card.back_image).toBe('this is a dummy back image url');
+
+	// Now get Tom's ordering and verify the new card was inserted at
+	// the front of the deck
+	const tomsId = await helpers.getUserIdByName('tom');
+	const tomsOrdering = await getOrdering({ deckId, userId: tomsId });
+	expect(JSON.parse(tomsOrdering)[0]).toBe(cardId);
+});
+
+// Add a card to one of users decks, partial data, happy path...
+// Authenticated user can add a card to a deck they are the owner of.
+test(`handler /cards/:deck_id, add card, partial data`, async () => {
+	await build();
+
+	// Authenticated user
+	const admin = await supertest(server)
+		.post('/login')
+		.send({
+			email: 'admin@iscool.com',
+			password: 'password',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Can add a card to a deck they are the owner of...
+	// Admin is the owner of "ES6 APIs"
+	const deckId = await helpers.getDeckIdByName('ES6 APIs');
+
+	// Send card to the server
+	// Handler for this route is at /handlers/cards/createCard.js
+	const newCardResponse = await supertest(server)
+		.post(`/cards/${deckId}`)
+		.set({
+			Authorization: `Bearer ${admin.body.token}`,
+		})
+		.send({
+			front_text: 'this is the front text',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Check response contains 'created: true' and the new card_id
+	expect(newCardResponse.body.created).toBe(true);
+	const cardId = newCardResponse.body.card_id;
+
+	// Get the actual card with the returned card_id and
+	// verify it contains what we expect it to
+	const card = await getCard(cardId);
+	expect(card.front_text).toBeDefined();
+	expect(card.front_text).toBe('this is the front text');
+	expect(card.front_image).toBe(null);
+	expect(card.back_text).toBe(null);
+	expect(card.back_image).toBe(null);
+	expect(card.important).toBe(null);
+	expect(card.color).toBe(null);
+});
+
+// Add a card to user's deck, sad path...
+// User is authenticated and has correct permission to add to the deck but
+// their request omits front_text AND front_image so the request should fail
+test(`handler /cards/:deck_id, add card, missing params`, async () => {
+	await build();
+
+	// Authenticated user
+	const admin = await supertest(server)
+		.post('/login')
+		.send({
+			email: 'admin@iscool.com',
+			password: 'password',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Can add a card to a deck they are the owner of...
+	// Admin is the owner of "ES6 APIs"
+	const deckId = await helpers.getDeckIdByName('ES6 APIs');
+
+	// Send card to the server
+	// Handler for this route is at /handlers/cards/createCard.js
+	const newCardResponse = await supertest(server)
+		.post(`/cards/${deckId}`)
+		.set({
+			Authorization: `Bearer ${admin.body.token}`,
+		})
+		.send({
+			// We deliberately omit front_text and front_image
+			back_text: 'this is the back text',
+			back_image: 'this is a dummy back image url',
+			color: '#1F6',
+		})
+		.expect(400)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Check response is the appropriate error message
+	expect(newCardResponse.body.error).toBeDefined();
+	expect(newCardResponse.body.error).toContain('must have either');
+});
+
+// Add a card to my deck, sad path...
+// User is authenticated but tried to add to a non-existant deck so the request
+// should fail
+test(`handler /cards/:deck_id, add card to non-existant deck`, async () => {
+	await build();
+
+	// Authenticated user
+	const admin = await supertest(server)
+		.post('/login')
+		.send({
+			email: 'admin@iscool.com',
+			password: 'password',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Send card to the server
+	// Handler for this route is at /handlers/cards/createCard.js
+	const newCardResponse = await supertest(server)
+		.post(`/cards/93847598347523423`)
+		.set({
+			Authorization: `Bearer ${admin.body.token}`,
+		})
+		.send({
+			front_text: 'this is the front text',
+			front_image: 'this is a dummy front image url',
+			back_text: 'this is the back text',
+			back_image: 'this is a dummy back image url',
+			important: true,
+			color: '#1F6',
+		})
+		.expect(500)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Check response is the appropriate error message
+	// console.log('NCRB:', newCardResponse.text);
+	expect(newCardResponse.body.error).toBeDefined();
+	expect(newCardResponse.body.error).toContain('out of range');
+	expect(newCardResponse.body.code).toBe(22003);
+});
+
+// Ends the connection to the pool so Jest can finish.
 afterAll(() => {
 	db.end();
 	// db.$pool.end();

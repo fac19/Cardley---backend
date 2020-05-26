@@ -54,7 +54,7 @@ function place(req, res, next) {
 			const newCardId = JSON.parse(newOrdering)[0];
 
 			// We then return that card
-			const card = await getCard({ cardId: newCardId });
+			const card = await getCard(newCardId);
 			res.status(200).send({
 				current_position: 0,
 				deck_length: ordering.length,

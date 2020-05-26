@@ -5,7 +5,7 @@ const logs = process.env.LOGGING;
 
 // eslint-disable-next-line no-unused-vars
 function handleError(err, req, res, next) {
-	const errCode = err.code || err.statusCode || 500;
+	const errCode = Number(err.code || err.statusCode || 500);
 	const errTime = new Date(Date.now()).toLocaleString();
 
 	if (logs === 'ON' || logs === 'VERBOSE') {
@@ -18,9 +18,12 @@ function handleError(err, req, res, next) {
 		}
 	}
 
-	res.status(errCode).json({
+	// Note if there is an erro in this func express seemingly
+	// falls back to sending errors in html format.
+	res.status(errCode > 599 ? 500 : errCode).json({
 		error: err.message,
 		code: errCode,
+		time: errTime,
 	});
 }
 

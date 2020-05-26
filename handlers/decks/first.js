@@ -18,7 +18,7 @@ async function getFirst(req, res, next) {
 		const cardId = ordering[0];
 
 		// Step 3. Use that card_id to get the card
-		const card = await getCard({ cardId });
+		const card = await getCard(cardId);
 
 		res.status(200).send({
 			current_position: 0,
