@@ -17,7 +17,10 @@ function canReadDeckOrDie(deckId, userId) {
 	return db
 		.query(`SELECT * FROM decks WHERE deck_id = $1`, [deckId])
 		.then(({ rows }) => {
-			if (!rows || (rows[0].owner_id !== userId && !rows[0].published)) {
+			if (
+				rows.length === 0 ||
+				(rows[0].owner_id !== userId && !rows[0].published)
+			) {
 				throw errNow(
 					401,
 					"Deck doesn't exist or you don't have permission to see it",
@@ -31,7 +34,7 @@ function canWriteDeckOrDie(deckId, userId) {
 	return db
 		.query(`SELECT * FROM decks WHERE deck_id = $1`, [deckId])
 		.then(({ rows }) => {
-			if (!rows || rows[0].owner_id !== userId) {
+			if (rows.length === 0 || rows[0].owner_id !== userId) {
 				throw errNow(
 					401,
 					"Deck doesn't exist or you don't have write permission",
@@ -62,7 +65,10 @@ function canReadCardOrDie(cardId, userId) {
 			[cardId],
 		)
 		.then(({ rows }) => {
-			if (!rows || (rows[0].owner_id !== userId && !rows[0].published)) {
+			if (
+				rows.length === 0 ||
+				(rows[0].owner_id !== userId && !rows[0].published)
+			) {
 				throw errNow(
 					401,
 					"Card doesn't exist or you don't have permission to see it",
@@ -91,7 +97,7 @@ function canWriteCardOrDie(cardId, userId) {
 			[cardId],
 		)
 		.then(({ rows }) => {
-			if (!rows || rows[0].owner_id !== userId) {
+			if (rows.length === 0 || rows[0].owner_id !== userId) {
 				throw errNow(
 					401,
 					// eslint-disable-next-line max-len

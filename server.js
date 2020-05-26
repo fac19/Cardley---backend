@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const auth = require('./middleware/auth');
 const handleError = require('./middleware/error');
+const logging = require('./middleware/logging');
 
 // Our handlers
 const signup = require('./handlers/users/signup.js');
@@ -18,6 +19,10 @@ const PORT = process.env.PORT || 3001;
 const server = express();
 server.use(express.json());
 server.use(cors());
+
+if (process.env.TESTING !== 'TRUE') {
+	server.use(logging);
+}
 
 server.post('/signup', signup);
 server.post('/login', login);
