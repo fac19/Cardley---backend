@@ -40,11 +40,7 @@ function place(req, res, next) {
 			ordering.splice(newPlace, 0, firstCard);
 
 			// Save this ordering to the database
-			await updateOrdering({
-				userId,
-				deckId,
-				newOrdering: JSON.stringify(ordering),
-			});
+			await updateOrdering(userId, deckId, JSON.stringify(ordering));
 
 			// We now need to return the next card.
 			// This might be from a different deck though
@@ -58,7 +54,7 @@ function place(req, res, next) {
 			const newCardId = JSON.parse(newOrdering)[0];
 
 			// We then return that card
-			const card = await getCard({ cardId: newCardId });
+			const card = await getCard(newCardId);
 			res.status(200).send({
 				current_position: 0,
 				deck_length: ordering.length,
