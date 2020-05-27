@@ -36,8 +36,6 @@ async function createCard(req, res, next) {
 			color: req.body.color,
 		};
 
-		// console.log('cardDetails:', cardDetails);
-
 		// step 1: add card to cards table, returning card_id
 		const newCard = await addCardModel(cardDetails);
 		const newCardId = newCard.card_id;
@@ -58,7 +56,7 @@ async function createCard(req, res, next) {
 			);
 		});
 
-		return res.send({
+		return res.status(201).send({
 			created: true,
 			card_id: newCardId,
 		});

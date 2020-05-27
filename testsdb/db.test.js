@@ -643,7 +643,7 @@ test(`handler /cards/:deck_id, add card to own deck, happy path`, async () => {
 			important: true,
 			color: '#1F6',
 		})
-		.expect(200)
+		.expect(201)
 		.expect('content-type', 'application/json; charset=utf-8');
 
 	// Check response contains 'created: true' and the new card_id
@@ -696,7 +696,7 @@ test(`handler /cards/:deck_id, add card, partial data`, async () => {
 		.send({
 			front_text: 'this is the front text',
 		})
-		.expect(200)
+		.expect(201)
 		.expect('content-type', 'application/json; charset=utf-8');
 
 	// Check response contains 'created: true' and the new card_id
@@ -795,6 +795,141 @@ test(`handler /cards/:deck_id, add card to non-existant deck`, async () => {
 	expect(newCardResponse.body.error).toBeDefined();
 	expect(newCardResponse.body.error).toContain('out of range');
 	expect(newCardResponse.body.code).toBe(22003);
+});
+
+// Update a card, happy path...
+// Authenticated user can update a card they are the owner of.
+// Missing fields do NOT overwrite existing ones with nulls.
+test(`handler PUT /cards/:card_id, edit own card, happy path`, async () => {
+	await build();
+
+	// Authenticated user
+	const admin = await supertest(server)
+		.post('/login')
+		.send({
+			email: 'admin@iscool.com',
+			password: 'password',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Can add a card to a deck they are the owner of...
+	// Admin is the owner of "ES6 APIs"
+	const userId = await helpers.getUserIdByName('admin');
+	const deckId = await helpers.getDeckIdByName('ES6 APIs');
+	const deckOrdering = await getOrdering({ deckId, userId });
+	const cardId = JSON.parse(deckOrdering)[0];
+
+	// console.log('CARD ID:', cardId);
+
+	// Send card to the server
+	// Handler for this route is at /handlers/cards/createCard.js
+	const updateResponse = await supertest(server)
+		.put(`/cards/${cardId}`)
+		.set({
+			Authorization: `Bearer ${admin.body.token}`,
+		})
+		.send({
+			front_text: 'This was a question about fetch',
+			color: '#F16',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Check response contains 'updated: true'
+	expect(updateResponse.body.updated).toBeDefined();
+	expect(updateResponse.body.updated).toBe(true);
+
+	// Get the actual card with the returned card_id and
+	// verify it contains what we expect it to
+	const card = await getCard(cardId);
+	expect(card.front_text).toBeDefined();
+	expect(card.front_text).toBe('This was a question about fetch');
+	expect(card.back_text).toContain('the resource you want');
+	expect(card.color).toBe('#F16');
+});
+
+// Update a card, sad path, wrong user...
+// Authenticated user can't update a card they don't own
+test(`handler PUT /cards/:card_id, can't edit other users card`, async () => {
+	await build();
+
+	// Authenticated user
+	const tom = await supertest(server)
+		.post('/login')
+		.send({
+			email: 'tom@iscool.com',
+			password: 'password',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Can't add a card to a deck they are NOT the owner of...
+	// tom is NOT the owner of "ES6 APIs"
+	// cardId is id of a card owned by admin
+	const userId = await helpers.getUserIdByName('admin');
+	const deckId = await helpers.getDeckIdByName('ES6 APIs');
+	const deckOrdering = await getOrdering({ deckId, userId });
+	const cardId = JSON.parse(deckOrdering)[0];
+
+	// Send card to the server
+	// Handler for this route is at /handlers/cards/createCard.js
+	const updateResponse = await supertest(server)
+		.put(`/cards/${cardId}`)
+		.set({
+			Authorization: `Bearer ${tom.body.token}`,
+		})
+		.send({
+			front_text: 'This WAS a question about fetch',
+			color: '#F16',
+		})
+		.expect(401)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Check response contains .error with right error message
+	expect(updateResponse.body.error).toBeDefined();
+	expect(updateResponse.body.error).toContain("doesn't exist or you");
+
+	// Get the actual card with the returned card_id and
+	// verify it hasn't been updated
+	const card = await getCard(cardId);
+	expect(card.front_text).toBeDefined();
+	expect(card.front_text).toContain('What are the parameters to fetch');
+	expect(card.color).not.toBe('#F16');
+});
+
+// Update a card, sad path, non-existant card id...
+// Authenticated user can't update a card that doesn't exist
+test(`handler PUT /cards/:card_id, non-existant card`, async () => {
+	await build();
+
+	// Authenticated user
+	const tom = await supertest(server)
+		.post('/login')
+		.send({
+			email: 'tom@iscool.com',
+			password: 'password',
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Send card to the server
+	// Handler for this route is at /handlers/cards/createCard.js
+	const updateResponse = await supertest(server)
+		.put(`/cards/123456789`)
+		.set({
+			Authorization: `Bearer ${tom.body.token}`,
+		})
+		.send({
+			front_text: 'This WAS a question about fetch',
+			color: '#F16',
+		})
+		.expect(401)
+		.expect('content-type', 'application/json; charset=utf-8');
+
+	// Check response contains .error with right error message
+	expect(updateResponse.body.error).toBeDefined();
+	expect(updateResponse.body.error).toContain("doesn't exist or you");
 });
 
 // Ends the connection to the pool so Jest can finish.
