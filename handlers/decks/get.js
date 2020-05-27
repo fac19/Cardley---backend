@@ -1,4 +1,4 @@
-const get = require('../../model/get.js');
+const get = require('../../model/getDecks.js');
 
 function getDecks(req, res, next) {
 	get({ user_id: req.token.user_id })

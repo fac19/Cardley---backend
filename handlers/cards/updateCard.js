@@ -4,17 +4,18 @@ const { errNow } = require('../../utils.js');
 
 async function updateCard(req, res, next) {
 	try {
-		// console.log('req.params.card_id:', req.params.card_id);
+		// Verify card_id from URL parameter is a positive integer
 		const cardId = Number(req.params.card_id);
-		if (Number.isNaN(cardId))
+		if (Number.isNaN(cardId) || cardId < 1)
 			throw errNow(
 				400,
-				`Card ID must be an integer, we got ${req.params.card_id}`,
+				`Card ID must be a positive int, we got ${req.params.card_id}`,
 				'handlers/cards/updateCard - req.params.card_id is NaN!',
 			);
 		// Check user has permission to write to this deck
 		await canWriteCardOrDie(cardId, req.token.user_id);
 
+		// Prepare addCard parameter object
 		const cardDetails = {
 			cardId,
 			front_text: req.body.front_text,
@@ -25,7 +26,7 @@ async function updateCard(req, res, next) {
 			color: req.body.color,
 		};
 
-		// step 1: add card to cards table, returning card_id
+		// run update, it should throw if it fails
 		await updateCardModel(cardDetails);
 		return res.status(200).send({ updated: true });
 	} catch (err) {

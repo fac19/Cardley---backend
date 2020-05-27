@@ -2,9 +2,6 @@ const db = require('../db/connection.js');
 const { errNow } = require('../utils.js');
 
 function updateCard(card) {
-	console.log('GOT HERE!!!');
-	// return db.query(`UPDATE * FROM cards;`).then((result) => result.rows);
-
 	return db
 		.query(
 			`
@@ -32,7 +29,6 @@ function updateCard(card) {
 			],
 		)
 		.then((result) => {
-			console.log('updateCard result', result.rows);
 			if (result.rows.length !== 1) {
 				throw errNow(
 					500,

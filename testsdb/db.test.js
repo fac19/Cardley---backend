@@ -5,7 +5,7 @@ const server = require('../server');
 
 const createUser = require('../model/createUser');
 const getUser = require('../model/getUser');
-const get = require('../model/get');
+const get = require('../model/getDecks');
 const getOrdering = require('../model/getOrdering');
 const getCard = require('../model/getCard');
 const addDeck = require('../model/addDeck');

@@ -6,13 +6,15 @@ const { errNow } = require('../../utils.js');
 
 async function createCard(req, res, next) {
 	try {
+		// Verify card_id from URL parameter is a positive integer
 		const deckId = Number(req.params.deck_id);
-		if (Number.isNaN(deckId))
+		if (Number.isNaN(deckId) || deckId < 1)
 			throw errNow(
 				400,
-				`Deck ID must be an integer, we got ${req.params.deck_id}`,
+				`Deck ID must be a positive int, we got ${req.params.deck_id}`,
 				'handlers/cards/createCard - req.params.deck_id is NaN!',
 			);
+
 		// Check user has permission to write to this deck
 		await canWriteDeckOrDie(deckId, req.token.user_id);
 
@@ -26,6 +28,7 @@ async function createCard(req, res, next) {
 			);
 		}
 
+		// Prepare addCard parameter object
 		const cardDetails = {
 			deckId,
 			front_text: req.body.front_text,
