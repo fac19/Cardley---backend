@@ -18,41 +18,55 @@ const addCard = require('../model/addCard');
 
 const helpers = require('../model/helpers');
 
-test('Database builds with test fixtures', () => {
-	return build().then(() => {
-		return db.query('SELECT * FROM users WHERE USER_ID = 1').then((res) => {
-			expect(res.rows[0].user_name).toBe('admin');
-		});
+// Helpers
+// Helpers
+// Helpers
+
+function loginAs(user) {
+	return supertest(server)
+		.post('/login')
+		.send({ password: 'password', email: `${user}@iscool.com` })
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+}
+
+beforeEach(async () => {
+	await build();
+});
+
+// Model tests
+// Model tests
+// Model tests
+
+test('Database builds with test fixtures', async () => {
+	return db.query('SELECT * FROM users WHERE USER_ID = 1').then((res) => {
+		expect(res.rows[0].user_name).toBe('admin');
 	});
 });
 
-test('model createUser - signup data is successfully entered into db', () => {
-	return build().then(() => {
-		const params = {
-			userName: 'Bob',
-			email: 'bob@iscool.com',
-			password: 'wevs',
-		};
-		return createUser(params).then((res) => {
-			expect(typeof res).toBe(typeof 1);
-		});
+// Test signup data is successfully entered into db
+test('model createUser - data saved in db', async () => {
+	const params = {
+		userName: 'Bob',
+		email: 'bob@iscool.com',
+		password: 'wevs',
+	};
+	return createUser(params).then((res) => {
+		expect(typeof res).toBe(typeof 1);
 	});
 });
 
-test('model getUser - check we can get a user record by email', () => {
-	return build().then(() => {
-		const params = {
-			email: 'admin@iscool.com',
-		};
-		return getUser(params).then((res) => {
-			expect(res.user_name).toBe('admin');
-			expect(res.password_slug.length).toBeGreaterThan(10);
-		});
+test('model getUser - check we can get a user record by email', async () => {
+	const params = {
+		email: 'admin@iscool.com',
+	};
+	return getUser(params).then((res) => {
+		expect(res.user_name).toBe('admin');
+		expect(res.password_slug.length).toBeGreaterThan(10);
 	});
 });
 
 test('model getCard - check we can get a card by card_id', async () => {
-	await build();
 	const card = await getCard(1);
 
 	expect(card.card_id).toBeDefined();
@@ -67,21 +81,19 @@ test('model getCard - check we can get a card by card_id', async () => {
 	expect(card.front_text).toBe('window');
 });
 
-test('model get - check model returns a list of decks', () => {
-	return build().then(() => {
-		const params = {
-			user_id: 1,
-		};
-		return get(params).then((res) => {
-			expect(Array.isArray(res)).toBe(true);
-			expect(res.length > 1).toBe(true);
-			expect(res[0].user_name).toBe('admin');
-			expect(
-				res[0].deck_name === 'French Vocab' ||
-					res[0].deck_name === 'ES6 APIs',
-			).toBe(true);
-			expect(typeof res[0].deck_id).toBe(typeof 1);
-		});
+test('model get - check model returns a list of decks', async () => {
+	const params = {
+		user_id: 1,
+	};
+	return get(params).then((res) => {
+		expect(Array.isArray(res)).toBe(true);
+		expect(res.length > 1).toBe(true);
+		expect(res[0].user_name).toBe('admin');
+		expect(
+			res[0].deck_name === 'French Vocab' ||
+				res[0].deck_name === 'ES6 APIs',
+		).toBe(true);
+		expect(typeof res[0].deck_id).toBe(typeof 1);
 	});
 });
 
@@ -90,7 +102,6 @@ test('model get - check model returns a list of decks', () => {
 // Prettier insists on reformatting it to be >80 chars long!
 // eslint-disable-next-line max-len
 test('model getOrdering - check we can get an ordering by user_id', async () => {
-	await build();
 	const userId = await helpers.getUserIdByName('admin');
 	const deckId = await helpers.getDeckIdByName('French Vocab');
 	// console.log('THE IDS:', userId, deckId);
@@ -100,19 +111,16 @@ test('model getOrdering - check we can get an ordering by user_id', async () => 
 });
 
 test('model getCardsInDeck - can get all cards in a given deck', async () => {
-	await build();
 	const cardsInDeck = await getCardsInDeck(1);
 	expect(cardsInDeck.rows.length).toBe(4);
 });
 
 test('model canReadCardOrDie - happy path', async () => {
-	await build();
 	const userId = await helpers.getUserIdByName('admin');
 	return expect(helpers.canReadCardOrDie(2, userId)).resolves;
 });
 
 test('model canReadCardOrDie - wrong user', async () => {
-	await build();
 	const userId = await helpers.getUserIdByName('tom');
 	return expect(helpers.canReadCardOrDie(2, userId)).rejects.toThrowError(
 		"Card doesn't exist or you don't have permission to see it",
@@ -120,13 +128,11 @@ test('model canReadCardOrDie - wrong user', async () => {
 });
 
 test('model canWriteCardOrDie - happy path', async () => {
-	await build();
 	const userId = await helpers.getUserIdByName('admin');
 	return expect(helpers.canWriteCardOrDie(2, userId)).resolves;
 });
 
 test('model canWriteCardOrDie - wrong user', async () => {
-	await build();
 	const userId = await helpers.getUserIdByName('tom');
 	return expect(helpers.canWriteCardOrDie(2, userId)).rejects.toThrowError(
 		"Card doesn't exist or you don't have permission to write it",
@@ -134,7 +140,6 @@ test('model canWriteCardOrDie - wrong user', async () => {
 });
 
 test('model addDeck returns a number', async () => {
-	await build();
 	const deckId = await addDeck({
 		ownerId: '1',
 		deckName: "tom's deck",
@@ -144,7 +149,6 @@ test('model addDeck returns a number', async () => {
 });
 
 test('model addCollection adds a collection', async () => {
-	await build();
 	const userId = 2;
 	const deckId = 4;
 
@@ -153,7 +157,6 @@ test('model addCollection adds a collection', async () => {
 });
 
 test('model addCard adds a card', async () => {
-	await build();
 	const card = {
 		deckId: '1',
 		front_text: 'front-text',
@@ -174,7 +177,6 @@ test('model addCard adds a card', async () => {
 });
 
 test('model getCollectionsByDeck gets a collection', async () => {
-	await build();
 	const deckId = 2;
 	const collections = await getCollectionsByDeck(deckId);
 	expect(Array.isArray(collections)).toBe(true);
@@ -184,7 +186,6 @@ test('model getCollectionsByDeck gets a collection', async () => {
 });
 
 test('model updateOrdering updates the order for a deck and user', async () => {
-	await build();
 	const userId = 1;
 	const deckId = 2;
 	const newOrdering = JSON.stringify([1, 3, 9, 11, 2, 4]);
@@ -203,7 +204,6 @@ test('model updateOrdering updates the order for a deck and user', async () => {
 // HANDLERS
 
 test('handler /signup, happy path', async () => {
-	await build();
 	const res = await supertest(server)
 		.post('/signup')
 		.send({
@@ -219,7 +219,6 @@ test('handler /signup, happy path', async () => {
 });
 
 test('handler /signup, duplicate name', async () => {
-	await build();
 	const res = await supertest(server)
 		.post('/signup')
 		.send({
@@ -233,7 +232,6 @@ test('handler /signup, duplicate name', async () => {
 });
 
 test('handler /public-decks, happy path', async () => {
-	await build();
 	const res = await supertest(server)
 		.get('/public-decks')
 		.expect(200)
@@ -244,8 +242,7 @@ test('handler /public-decks, happy path', async () => {
 	expect(deckNames.includes('ES6 APIs')).toBe(true);
 });
 
-test('handler /login, happy path', async () => {
-	await build();
+test('handler /signup, happy path', async () => {
 	// Sign up for an account
 	await supertest(server)
 		.post('/signup')
@@ -272,7 +269,6 @@ test('handler /login, happy path', async () => {
 });
 
 test('handler /login, good email, bad password', async () => {
-	await build();
 	// Sign up for an account
 	await supertest(server)
 		.post('/signup')
@@ -298,7 +294,6 @@ test('handler /login, good email, bad password', async () => {
 });
 
 test('handler /login, bad email, good password', async () => {
-	await build();
 	// Sign up for an account
 	await supertest(server)
 		.post('/signup')
@@ -325,8 +320,6 @@ test('handler /login, bad email, good password', async () => {
 });
 
 test('handler /login, empty field', async () => {
-	await build();
-
 	// Sign up for an account
 	await supertest(server)
 		.post('/signup')
@@ -356,18 +349,10 @@ test('handler /login, empty field', async () => {
 // /decks/first/:deck_id - logged in as correct user for deck
 // /decks/first/:deck_id - logged in as correct user for deck
 test('handler /decks/first/:deck_id - correct user', async () => {
-	await build();
-
 	const deckId = await helpers.getDeckIdByName('French Vocab');
+
 	// Log in and get token
-	const login = await supertest(server)
-		.post('/login')
-		.send({
-			password: 'password',
-			email: 'admin@iscool.com',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
+	const login = await loginAs('admin');
 	expect(login.body.token).toBeDefined();
 
 	// Now we can make our get request with the auth header
@@ -388,18 +373,10 @@ test('handler /decks/first/:deck_id - correct user', async () => {
 // /decks/first/:deck_id - logged in as WRONG user for deck
 // /decks/first/:deck_id - logged in as WRONG user for deck
 test('handler /decks/first/:deck_id - wrong user', async () => {
-	await build();
-
 	const deckId = await helpers.getDeckIdByName('French Vocab');
+
 	// Log in and get token
-	const login = await supertest(server)
-		.post('/login')
-		.send({
-			password: 'password',
-			email: 'tom@iscool.com',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
+	const login = await loginAs('tom');
 	expect(login.body.token).toBeDefined();
 
 	// Now we can make our get request with the auth header
@@ -420,7 +397,6 @@ test('handler /decks/first/:deck_id - wrong user', async () => {
 // Auth only route - not logged in
 // Auth only route - not logged in
 test('Auth only route - not logged in', async () => {
-	await build();
 	const deckId = await helpers.getDeckIdByName('French Vocab');
 	// Make get request without auth header
 	const res = await supertest(server)
@@ -435,7 +411,6 @@ test('Auth only route - not logged in', async () => {
 // Auth only route - invalid jwt
 // Auth only route - invalid jwt
 test('Auth only route - invalid jwt', async () => {
-	await build();
 	const deckId = await helpers.getDeckIdByName('French Vocab');
 	// Make get request with bad token in auth header
 	const res = await supertest(server)
@@ -453,17 +428,8 @@ test('Auth only route - invalid jwt', async () => {
 // /decks/place - logged in as correct user for deck
 // /decks/place - logged in as correct user for deck
 test('handler /place, happy path', async () => {
-	await build();
-
 	// Log into that account
-	const login = await supertest(server)
-		.post('/login')
-		.send({
-			password: 'password',
-			email: 'admin@iscool.com',
-		})
-		// .expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
+	const login = await loginAs('admin');
 
 	const cardRecord = await supertest(server)
 		.post('/place')
@@ -503,16 +469,7 @@ test('handler /place, happy path', async () => {
 
 // cannot access a private deck of another user
 test(`handler cards/deck/:id`, async () => {
-	await build();
-
-	const login = await supertest(server)
-		.post('/login')
-		.send({
-			password: 'password',
-			email: 'tom@iscool.com',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
+	const login = await loginAs('tom');
 
 	const cards = await supertest(server)
 		.get('/cards/deck/1')
@@ -529,18 +486,7 @@ test(`handler cards/deck/:id`, async () => {
 // authenticated user can add deck,
 // and this adds a collection and deck belonging to the user
 test(`handler /decks/:name - logged in user can make deck`, async () => {
-	await build();
-
-	const admin = await supertest(server)
-		.post('/login')
-		.send({
-			email: 'admin@iscool.com',
-			password: 'password',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
-
-	// console.log(admin.body.token)
+	const admin = await loginAs('admin');
 
 	const newDeck = await supertest(server)
 		.post('/decks/test-deck')
@@ -575,21 +521,12 @@ test(`handler /decks/:name - logged in user can make deck`, async () => {
 // Don't know if this test is working! (haven't written the handler for this yet (or the models))
 // test.skip(`handler /decks/import/:deck-id updates your collection with the deck id you chose`, async ()=>{
 test.skip(`handler /decks/import/:deck-id add public decks`, async () => {
-	await build();
-
 	const userId = 1;
 	const requestDeckId = 2;
 	const decksInitially = await get({ user_id: userId });
 	const numberOfDecksInitially = decksInitially.length;
 
-	const login = await supertest(server)
-		.post('/login')
-		.send({
-			email: 'admin@iscool.com',
-			password: 'password',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
+	const login = await loginAs('admin');
 
 	// const newCollection = await supertest(server)
 	await supertest(server)
@@ -612,17 +549,8 @@ test.skip(`handler /decks/import/:deck-id add public decks`, async () => {
 // The added card is also added at the front of all deck orderings
 // for that deck.
 test(`handler /cards/:deck_id, add card to own deck, happy path`, async () => {
-	await build();
-
 	// Authenticated user
-	const admin = await supertest(server)
-		.post('/login')
-		.send({
-			email: 'admin@iscool.com',
-			password: 'password',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
+	const admin = await loginAs('admin');
 
 	// Can add a card to a deck they are the owner of...
 	// Admin is the owner of "ES6 APIs"
@@ -670,17 +598,8 @@ test(`handler /cards/:deck_id, add card to own deck, happy path`, async () => {
 // Add a card to one of users decks, partial data, happy path...
 // Authenticated user can add a card to a deck they are the owner of.
 test(`handler /cards/:deck_id, add card, partial data`, async () => {
-	await build();
-
 	// Authenticated user
-	const admin = await supertest(server)
-		.post('/login')
-		.send({
-			email: 'admin@iscool.com',
-			password: 'password',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
+	const admin = await loginAs('admin');
 
 	// Can add a card to a deck they are the owner of...
 	// Admin is the owner of "ES6 APIs"
@@ -719,17 +638,8 @@ test(`handler /cards/:deck_id, add card, partial data`, async () => {
 // User is authenticated and has correct permission to add to the deck but
 // their request omits front_text AND front_image so the request should fail
 test(`handler /cards/:deck_id, add card, missing params`, async () => {
-	await build();
-
 	// Authenticated user
-	const admin = await supertest(server)
-		.post('/login')
-		.send({
-			email: 'admin@iscool.com',
-			password: 'password',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
+	const admin = await loginAs('admin');
 
 	// Can add a card to a deck they are the owner of...
 	// Admin is the owner of "ES6 APIs"
@@ -760,17 +670,8 @@ test(`handler /cards/:deck_id, add card, missing params`, async () => {
 // User is authenticated but tried to add to a non-existant deck so the request
 // should fail
 test(`handler /cards/:deck_id, add card to non-existant deck`, async () => {
-	await build();
-
 	// Authenticated user
-	const admin = await supertest(server)
-		.post('/login')
-		.send({
-			email: 'admin@iscool.com',
-			password: 'password',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
+	const admin = await loginAs('admin');
 
 	// Send card to the server
 	// Handler for this route is at /handlers/cards/createCard.js
@@ -801,17 +702,8 @@ test(`handler /cards/:deck_id, add card to non-existant deck`, async () => {
 // Authenticated user can update a card they are the owner of.
 // Missing fields do NOT overwrite existing ones with nulls.
 test(`handler PUT /cards/:card_id, edit own card, happy path`, async () => {
-	await build();
-
 	// Authenticated user
-	const admin = await supertest(server)
-		.post('/login')
-		.send({
-			email: 'admin@iscool.com',
-			password: 'password',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
+	const admin = await loginAs('admin');
 
 	// Can add a card to a deck they are the owner of...
 	// Admin is the owner of "ES6 APIs"
@@ -852,17 +744,8 @@ test(`handler PUT /cards/:card_id, edit own card, happy path`, async () => {
 // Update a card, sad path, wrong user...
 // Authenticated user can't update a card they don't own
 test(`handler PUT /cards/:card_id, can't edit other users card`, async () => {
-	await build();
-
 	// Authenticated user
-	const tom = await supertest(server)
-		.post('/login')
-		.send({
-			email: 'tom@iscool.com',
-			password: 'password',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
+	const tom = await loginAs('tom');
 
 	// Can't add a card to a deck they are NOT the owner of...
 	// tom is NOT the owner of "ES6 APIs"
@@ -901,17 +784,8 @@ test(`handler PUT /cards/:card_id, can't edit other users card`, async () => {
 // Update a card, sad path, non-existant card id...
 // Authenticated user can't update a card that doesn't exist
 test(`handler PUT /cards/:card_id, non-existant card`, async () => {
-	await build();
-
 	// Authenticated user
-	const tom = await supertest(server)
-		.post('/login')
-		.send({
-			email: 'tom@iscool.com',
-			password: 'password',
-		})
-		.expect(200)
-		.expect('content-type', 'application/json; charset=utf-8');
+	const tom = await loginAs('tom');
 
 	// Send card to the server
 	// Handler for this route is at /handlers/cards/createCard.js
