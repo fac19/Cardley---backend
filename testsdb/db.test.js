@@ -151,9 +151,8 @@ test('model addDeck returns a number', async () => {
 test('model addCollection adds a collection', async () => {
 	const userId = 2;
 	const deckId = 4;
-
 	const ordering = await addCollection({ userId, deckId });
-	expect(ordering.rows[0].ordering).toBe('[]');
+	expect(ordering).toBe('[]');
 });
 
 test('model addCard adds a card', async () => {
@@ -232,14 +231,44 @@ test('handler /signup, duplicate name', async () => {
 });
 
 test('handler /public-decks, happy path', async () => {
+	// Log in and get token
+	const login = await loginAs('tom');
+	expect(login.body.token).toBeDefined();
+
 	const res = await supertest(server)
 		.get('/public-decks')
+		.set({
+			Authorization: `Bearer ${login.body.token}`,
+		})
 		.expect(200)
 		.expect('content-type', 'application/json; charset=utf-8');
 	const userNames = res.body.map((v) => v.user_name);
 	const deckNames = res.body.map((v) => v.deck_name);
 	expect(userNames.includes('admin')).toBe(true);
 	expect(deckNames.includes('ES6 APIs')).toBe(true);
+});
+
+// API should not include a users own decks in the list of
+// public decks.
+test('handler /public-decks, not own decks', async () => {
+	// Log in and get token
+	const login = await loginAs('admin');
+	expect(login.body.token).toBeDefined();
+
+	const res = await supertest(server)
+		.get('/public-decks')
+		.set({
+			Authorization: `Bearer ${login.body.token}`,
+		})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+	const userNames = res.body.map((v) => v.user_name);
+	const deckNames = res.body.map((v) => v.deck_name);
+	expect(userNames.includes('admin')).toBe(false);
+	expect(deckNames.includes('ES6 APIs')).toBe(false);
+	expect(deckNames.includes('French Vocab')).toBe(false);
+	expect(deckNames.includes('Music')).toBe(false);
+	expect(deckNames.includes('Capital Cities')).toBe(true);
 });
 
 test('handler /signup, happy path', async () => {
@@ -517,31 +546,50 @@ test(`handler /decks/:name - logged in user can make deck`, async () => {
 	// see whether collection and deck were succesfully added
 });
 
-// Add a public deck to the users collection
-// Don't know if this test is working! (haven't written the handler for this yet (or the models))
-// test.skip(`handler /decks/import/:deck-id updates your collection with the deck id you chose`, async ()=>{
-test.skip(`handler /decks/import/:deck-id add public decks`, async () => {
-	const userId = 1;
-	const requestDeckId = 2;
+// Add a public deck to the users collection - happy path
+// Tom has a published deck that admin would like in their collection
+test(`handler /decks/add-public/:deck-id add public deck`, async () => {
+	const userId = await helpers.getUserIdByName('admin');
+	const requestDeckId = await helpers.getDeckIdByName('Capital Cities');
 	const decksInitially = await get({ user_id: userId });
 	const numberOfDecksInitially = decksInitially.length;
-
 	const login = await loginAs('admin');
-
-	// const newCollection = await supertest(server)
-	await supertest(server)
-		.post(`/decks/import/${requestDeckId}`)
+	const result = await supertest(server)
+		.post(`/decks/add-public/${requestDeckId}`)
 		.set({
 			Authorization: `Bearer ${login.body.token}`,
 		})
 		.send({}) // dont need to send anything as can get req.params.deck_id and user info from jwt
 		.expect(200)
 		.expect('content-type', 'application/json; charset=utf-8');
-
 	const decksNow = await get({ user_id: userId });
 	const numberOfDecksFinally = decksNow.length;
-
 	expect(numberOfDecksFinally).toBe(numberOfDecksInitially + 1);
+	expect(result.body.added).toBeDefined();
+	expect(result.body.added).toBe(true);
+});
+
+// Remove a public deck to the users collection - happy path
+// User tom no longer wants admin's deck ES6 APIs in their collection
+test(`handler /decks/remove-public/:deck-id add public deck`, async () => {
+	const userId = await helpers.getUserIdByName('tom');
+	const requestDeckId = await helpers.getDeckIdByName('ES6 APIs');
+	const decksInitially = await get({ user_id: userId });
+	const numberOfDecksInitially = decksInitially.length;
+	const login = await loginAs('tom');
+	const result = await supertest(server)
+		.delete(`/decks/remove-public/${requestDeckId}`)
+		.set({
+			Authorization: `Bearer ${login.body.token}`,
+		})
+		.send({})
+		.expect(200)
+		.expect('content-type', 'application/json; charset=utf-8');
+	const decksNow = await get({ user_id: userId });
+	const numberOfDecksFinally = decksNow.length;
+	expect(numberOfDecksFinally).toBe(numberOfDecksInitially - 1);
+	expect(result.body.removed).toBeDefined();
+	expect(result.body.removed).toBe(true);
 });
 
 // Add a card to one of users decks, happy path...
@@ -711,8 +759,6 @@ test(`handler PUT /cards/:card_id, edit own card, happy path`, async () => {
 	const deckId = await helpers.getDeckIdByName('ES6 APIs');
 	const deckOrdering = await getOrdering({ deckId, userId });
 	const cardId = JSON.parse(deckOrdering)[0];
-
-	// console.log('CARD ID:', cardId);
 
 	// Send card to the server
 	// Handler for this route is at /handlers/cards/createCard.js
