@@ -1,6 +1,6 @@
 const db = require('../db/connection.js');
 
-function getPublicDecks() {
+function getPublicDecks(except = -1) {
 	return db
 		.query(
 			`
@@ -16,8 +16,11 @@ function getPublicDecks() {
 				users.user_id = decks.owner_id
 			WHERE
 				decks.published = true
+			AND
+				users.user_id != ($1)
 			ORDER BY decks.deck_name ASC;
 			`,
+			[except],
 		)
 		.then((result) => result.rows);
 }

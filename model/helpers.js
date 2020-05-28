@@ -30,6 +30,20 @@ function canReadDeckOrDie(deckId, userId) {
 		});
 }
 
+function dieIfWeOwnThisDeck(deckId, userId) {
+	return db
+		.query(`SELECT * FROM decks WHERE deck_id = $1`, [deckId])
+		.then(({ rows }) => {
+			if (rows.length === 0 || rows[0].owner_id === userId) {
+				throw errNow(
+					401,
+					"Deck doesn't exist or you are the owner of this deck",
+					'helpers/dieIfWeOwnThisDeck',
+				);
+			}
+		});
+}
+
 function canWriteDeckOrDie(deckId, userId) {
 	return db
 		.query(`SELECT * FROM decks WHERE deck_id = $1`, [deckId])
@@ -108,6 +122,63 @@ function canWriteCardOrDie(cardId, userId) {
 		});
 }
 
+function dieIfNotPublished(deckId) {
+	return db
+		.query(
+			`
+			SELECT
+				*
+			FROM
+				decks
+			WHERE
+				deck_id = $1
+			AND
+				published = true`,
+			[deckId],
+		)
+		.then(({ rows }) => {
+			if (rows.length === 0) {
+				throw errNow(
+					401,
+					"Deck doesn't exist or it isn't published",
+					'helpers/dieIfNotPublished',
+				);
+			}
+		});
+}
+
+function dieIfWeHaveAlready(deckId, userId) {
+	return db
+		.query(
+			`
+		SELECT
+			*
+		FROM
+			collections
+		WHERE
+			deck_id = $1 AND user_id = $2
+		`,
+			[deckId, userId],
+		)
+		.then(({ rows }) => {
+			if (rows.length === 1) {
+				throw errNow(
+					401,
+					'You already have that deck in your collection',
+					'helpers/dieIfWeHaveAlready',
+				);
+			}
+		});
+}
+
+function getEveryCardIdInDeck(deckId) {
+	return db
+		.query(`SELECT card_id FROM cards WHERE deck_id = $1`, [deckId])
+		.then(({ rows }) => {
+			return rows.map((row) => row.card_id);
+		});
+}
+
 module.exports = {
 	getDeckIdByName,
 	getUserIdByName,
@@ -115,4 +186,8 @@ module.exports = {
 	canWriteDeckOrDie,
 	canReadCardOrDie,
 	canWriteCardOrDie,
+	dieIfNotPublished,
+	dieIfWeHaveAlready,
+	getEveryCardIdInDeck,
+	dieIfWeOwnThisDeck,
 };
