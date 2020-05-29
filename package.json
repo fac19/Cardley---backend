@@ -13,6 +13,7 @@
 		"testdb": "TESTING=TRUE jest -i testsdb/*.test.js",
 		"travistestdb": "TESTING=TRUE TESTDATABASE=travis_ci_test SECRET=testsecret jest --coverage=true",
 		"initdb": "node db/build.js",
+		"initdemodb": "node db/examples/addExamples.js",
 		"lint": "eslint .",
 		"prettify": "pretty-quick --staged"
 	},
@@ -46,10 +47,10 @@
 		"lint-staged": "^10.2.2",
 		"nodemon": "^2.0.4",
 		"prettier": "^2.0.5",
-		"pretty-quick": "^2.0.1",
-		"supertest": "^4.0.2"
+		"pretty-quick": "^2.0.1"
 	},
 	"dependencies": {
+		"supertest": "^4.0.2",
 		"bcryptjs": "^2.4.3",
 		"cors": "^2.8.5",
 		"dotenv": "^8.2.0",

@@ -1,0 +1,22 @@
+{"front": "Major", "back": "1 3 5"}
+{"front": "Minor", "back": "1 b3 5"}
+{"front": "sus2", "back": "1 2 5"}
+{"front": "sus4", "back": "1 4 5"}
+{"front": "sus2/4", "back": "1 2 4 5"}
+{"front": "maj7, (\u2206, M7)", "back": "1 3 5 7"}
+{"front": "m7, (-7, mi7)", "back": "1 b3 5 b7"}
+{"front": "7, (\"dominant 7\")", "back": "1 3 5 b7"}
+{"front": "6 (rare: M6)", "back": "1 3 5 6"}
+{"front": "m6 (-6, mi6)", "back": "1 b3 5 6"}
+{"front": "m7b5, (\u00f87)", "back": "1 b3 b5 b7"}
+{"front": "m(maj7)", "back": "1 b3 5 7"}
+{"front": "9", "back": "1 3 5 b7 9"}
+{"front": "m9", "back": "1 b3 5 b7 9"}
+{"front": "add9", "back": "1 3 5 9"}
+{"front": "6/9", "back": "1 3 5 6 9"}
+{"front": "11", "back": "1 3 5 b7 9 11"}
+{"front": "13", "back": "1 3 5 b7 9 11 13"}
+{"front": "\u00b0, (mb5, dim, \"diminished\")", "back": "1 b3 b5"}
+{"front": "+, (aug, #5)", "back": "1 3 #5"}
+{"front": "\u00b07, (dim7)", "back": "1 b3 b5 bb7"}
+{"front": "+7, (7+, aug7, \"augmented 7\")", "back": "1 3 #5 b7"}

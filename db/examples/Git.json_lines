@@ -1,0 +1,49 @@
+{"front": "Change username to <dummy>", "back": "git config --global user.name \"dummy\""}
+{"front": "Change user email to <dummy>", "back": "git config --global user.email dummy"}
+{"front": "Change editor for commits to <dummy>", "back": "git config --global core.editor \"dummy\""}
+{"front": "Display the git configuration", "back": "git config --list"}
+{"front": "Initialize git repo", "back": "git init"}
+{"front": "Start tracking all <.py> files", "back": "git add *.py"}
+{"front": "Commit with a message <msg>", "back": "git commit -m \"msg\""}
+{"front": "Stage all and commit", "back": "git commit -a"}
+{"front": "See the state of the repo", "back": "git status"}
+{"front": "See all the changes of a repo", "back": "git diff"}
+{"front": "Delete a file <file> from the file system and the git repo", "back": "git rm file"}
+{"front": "Delete an unstaged file <file> from the file system and the git repo", "back": "git rm -f file"}
+{"front": "Remove a file <file> from the stagging area without deleting it from the file system", "back": "git rm --cached file"}
+{"front": "Rename a file <file> to <file2>", "back": "git mv file file2"}
+{"front": "See all the past commits", "back": "git log"}
+{"front": "See a summary of all past commits", "back": "git log --pretty=oneline"}
+{"front": "Change last commit message", "back": "git commit --amend"}
+{"front": "Undo the last stagging for a file <file>", "back": "git reset HEAD file"}
+{"front": "Add origin url <url>", "back": "git remote add origin url"}
+{"front": "Display remote urls", "back": "git remote -v"}
+{"front": "Get remote files without changing local files", "back": "git fetch origin"}
+{"front": "Get remotes files overwritting local ones", "back": "git pull origin"}
+{"front": "Upload local files to the remote on the master branch", "back": "git push origin master"}
+{"front": "Rename the remote name from \"origin\" to \"sf\"", "back": "git remote rename origin sf"}
+{"front": "Display all tags", "back": "git tag"}
+{"front": "Add a tag name <v1> with a long description <description>", "back": "git tag -a v1 -m \"description\""}
+{"front": "See details for a tag <tagname>", "back": "git show tagname"}
+{"front": "Change the tag to <tagname> from a previous commit <hash>", "back": "git tag -a tagname hash"}
+{"front": "Push a tag <tagname> to the remote branch <branchname>", "back": "git push branchname tagname"}
+{"front": "Push all the tags to the remote branch <branchname>", "back": "git push branchname --tags"}
+{"front": "Add an alias <co> to the <commit> command", "back": "git config --global alias.co commit"}
+{"front": "Create a branch <branchName> and switch to it", "back": "git checkout -b branchName"}
+{"front": "Switch to another branch <branchName>", "back": "git checkout branchName"}
+{"front": "Display all branches", "back": "git branch"}
+{"front": "Push a branch <branchName> to a remote <origin>", "back": "git push origin branchName"}
+{"front": "Get a branch <branchName> from a remote <origin>", "back": "git checkout -b branchName origin/branchName"}
+{"front": "Display all merged branches", "back": "git branch --merged"}
+{"front": "Display all unmerged branches", "back": "git branch --no-merged"}
+{"front": "Display all branches and their last commit", "back": "git branch -v"}
+{"front": "Delete a branch <branchName>", "back": "git branch -d branchName"}
+{"front": "Delete an unmerged branch <branchName>", "back": "git branch -D branchName"}
+{"front": "Delete on remote <origin> a locally deleted branch <branchName>", "back": "git push origin :branchName"}
+{"front": "Resolve merging conflicts", "back": "git mergetool"}
+{"front": "Rebase a branch <branchName> to <master>", "back": "git checkout branchName<div>git rebase master</div>"}
+{"front": "Create a new commit that comes back to a previous one", "back": "git revert HEAD"}
+{"front": "Go to the commit <hash> and discard present ones", "back": "git reset hash"}
+{"front": "Reset and modify the file system", "back": "git reset --hard"}
+{"front": "Remove all untrack files and directories", "back": "git clean -df"}
+{"front": "Display all untracked files/directories to be cleaned", "back": "git clean -n"}

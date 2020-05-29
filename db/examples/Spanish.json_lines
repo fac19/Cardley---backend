@@ -1,0 +1,850 @@
+{"front": "I begin\n(irregular present)", "back": "comienzo"}
+{"front": "You begin\n(irregular present)", "back": "comienzas"}
+{"front": "He/She/It begins\n(irregular present)", "back": "comienza"}
+{"front": "We begin\n(present)", "back": "comenzamos"}
+{"front": "They begin\n(irregular present)", "back": "comienzan"}
+{"front": "I eat\n(present)", "back": "como"}
+{"front": "You eat\n(present)", "back": "comes"}
+{"front": "He/She/It eats\n(present)", "back": "come"}
+{"front": "We eat\n(present)", "back": "comemos"}
+{"front": "They eat\n(present)", "back": "comen"}
+{"front": "I buy\n(present)", "back": "compro"}
+{"front": "You buy\n(present)", "back": "compras"}
+{"front": "He/She/It buys\n(present)", "back": "compra"}
+{"front": "We buy\n(present)", "back": "compramos"}
+{"front": "They buy\n(present)", "back": "compran"}
+{"front": "I know (am familiar with)\n(irregular present)", "back": "conozco"}
+{"front": "You know (are familiar with)\n(present)", "back": "conoces"}
+{"front": "He/She/It knows (is familiar with)\n(present)", "back": "conoce"}
+{"front": "We know (are familiar with)\n(present)", "back": "conocemos"}
+{"front": "They know (are familiar with)\n(present)", "back": "conocen"}
+{"front": "I build\n(irregular present)", "back": "construyo"}
+{"front": "You build\n(irregular present)", "back": "construyes"}
+{"front": "He/She/It builds\n(irregular present)", "back": "construye"}
+{"front": "We build\n(present)", "back": "construimos"}
+{"front": "They build\n(irregular present)", "back": "construyen"}
+{"front": "I tell/count\n(irregular present)", "back": "cuento"}
+{"front": "You tell/count\n(irregular present)", "back": "cuentas"}
+{"front": "He/She/It tells/counts\n(irregular present)", "back": "cuenta"}
+{"front": "We tell/count\n(present)", "back": "contamos"}
+{"front": "They tell/count\n(irregular present)", "back": "cuentan"}
+{"front": "I believe\n(present)", "back": "creo"}
+{"front": "You believe\n(present)", "back": "crees"}
+{"front": "He/She/It believes\n(present)", "back": "cree"}
+{"front": "We believe\n(present)", "back": "creemos"}
+{"front": "They believe\n(present)", "back": "creen"}
+{"front": "I give\n(irregular present)", "back": "doy"}
+{"front": "You give\n(present)", "back": "das"}
+{"front": "He/She/It gives\n(present)", "back": "da"}
+{"front": "We give\n(present)", "back": "damose"}
+{"front": "They give\n(present)", "back": "dan"}
+{"front": "I owe (have to do something)\n(present)", "back": "debo"}
+{"front": "You owe (have to do something)\n(present)", "back": "debes"}
+{"front": "He/She/It owes (has to do something)\n(present)", "back": "debe"}
+{"front": "We owe (have to do something)\n(present)", "back": "debemos"}
+{"front": "They owe (have to do something)\n(present)", "back": "deben"}
+{"front": "I say\n(irregular present)", "back": "digo"}
+{"front": "You say\n(irregular present)", "back": "dices"}
+{"front": "He/She/It says\n(irregular present)", "back": "dice"}
+{"front": "We say\n(present)", "back": "decimos"}
+{"front": "They say\n(irregular present)", "back": "dicen"}
+{"front": "I sleep\n(irregular present)", "back": "duermo"}
+{"front": "You sleep\n(irregular present)", "back": "duermes"}
+{"front": "He/She/It sleeps\n(irregular present)", "back": "duerme"}
+{"front": "We sleep\n(present)", "back": "dormimos"}
+{"front": "They sleep\n(irregular present)", "back": "duermen"}
+{"front": "I enter\n(present)", "back": "entro"}
+{"front": "You enter\n(present)", "back": "entras"}
+{"front": "He/She/It enters\n(present)", "back": "entra"}
+{"front": "We enter\n(present)", "back": "entramos"}
+{"front": "They enter\n(present)", "back": "entran"}
+{"front": "I write\n(present)", "back": "escribo"}
+{"front": "You write\n(present)", "back": "escribes"}
+{"front": "He/She/It writes\n(present)", "back": "escribe"}
+{"front": "We write\n(present)", "back": "escribimos"}
+{"front": "They write\n(present)", "back": "escriben"}
+{"front": "I am (temporary condition)\n(irregular present)", "back": "estoy"}
+{"front": "You are (temporary condition)\n(irregular present)", "back": "est\u00e1s"}
+{"front": "He/She/It is (temporary condition)\n(irregular present)", "back": "est\u00e1"}
+{"front": "We are (temporary condition)\n(present)", "back": "estamos"}
+{"front": "They are (temporary condition)\n(irregular present)", "back": "est\u00e1n"}
+{"front": "I study\n(present)", "back": "estudio"}
+{"front": "You study\n(present)", "back": "estudias"}
+{"front": "He/She/It studies\n(present)", "back": "estudia"}
+{"front": "We study\n(present)", "back": "estudiamos"}
+{"front": "They study\n(present)", "back": "estudian"}
+{"front": "I like\n(present)", "back": "gusto"}
+{"front": "You like\n(present)", "back": "gustas"}
+{"front": "He/She/It likes\n(present)", "back": "gusta"}
+{"front": "We like\n(present)", "back": "gustamos"}
+{"front": "They like\n(present)", "back": "gustan"}
+{"front": "I have (haber)\n(irregular present)", "back": "he"}
+{"front": "You have (haber)\n(irregular present)", "back": "has"}
+{"front": "He/She/It&nbsp;has (haber)\n(irregular preterit)", "back": "ha/hay"}
+{"front": "We have (haber)\n(irregular present)", "back": "hemos"}
+{"front": "They have (haber)\n(irregular present)", "back": "han"}
+{"front": "I speak\n(present)", "back": "hablo"}
+{"front": "You speak\n(present)", "back": "hablas"}
+{"front": "He/She/It speaks\n(present)", "back": "habla"}
+{"front": "We speak\n(present)", "back": "hablamos"}
+{"front": "They speak\n(present)", "back": "hablan"}
+{"front": "You do\n(present)", "back": "haces"}
+{"front": "He/She/It does\n(present)", "back": "hace"}
+{"front": "We do\n(present)", "back": "hacmos"}
+{"front": "They do\n(present)", "back": "hacen"}
+{"front": "I go\n(irregular present)", "back": "voy"}
+{"front": "You go\n(irregular present)", "back": "vas"}
+{"front": "He/She/It goes\n(irregular present)", "back": "va"}
+{"front": "We go\n(irregular present)", "back": "vamos"}
+{"front": "They go\n(irregular present)", "back": "van"}
+{"front": "I read (present tense)\n(present)", "back": "leo"}
+{"front": "You read (present tense)\n(present)", "back": "lees"}
+{"front": "He/She/It reads\n(present)", "back": "lee"}
+{"front": "We read (present tense)\n(present)", "back": "leemos"}
+{"front": "They read (present tense)\n(preterit)", "back": "leen"}
+{"front": "I call\n(present)", "back": "llamo"}
+{"front": "You call\n(present)", "back": "llamas"}
+{"front": "He/She/It calls\n(present)", "back": "llama"}
+{"front": "We call\n(present)", "back": "llamamos"}
+{"front": "They call\n(present)", "back": "llaman"}
+{"front": "I take\n(present)", "back": "llevo"}
+{"front": "You take\n(present)", "back": "llevas"}
+{"front": "He/She/It takes\n(present)", "back": "lleva"}
+{"front": "We take\n(present)", "back": "llevamos"}
+{"front": "They take\n(present)", "back": "llevan"}
+{"front": "I drive\n(present)", "back": "manejo"}
+{"front": "You drive\n(present)", "back": "manejas"}
+{"front": "He/She/It drives\n(present)", "back": "maneja"}
+{"front": "They drive\n(present)", "back": "manejan"}
+{"front": "I look\n(present)", "back": "miro"}
+{"front": "You look\n(present)", "back": "miras"}
+{"front": "He/She/It looks\n(present)", "back": "mira"}
+{"front": "We look\n(present)", "back": "miramos"}
+{"front": "They look\n(preterit)", "back": "miran"}
+{"front": "I hear\n(irregular present)", "back": "oigo"}
+{"front": "You hear\n(irregular present)", "back": "oyes"}
+{"front": "He/She/It hears\n(irregular present)", "back": "oye"}
+{"front": "We hear\n(irregular present)", "back": "o\u00edmos"}
+{"front": "They hear\n(irregular present)", "back": "oyen"}
+{"front": "I pay\n(present)", "back": "pago"}
+{"front": "You pay\n(present)", "back": "pagas"}
+{"front": "He/She/It pays\n(present)", "back": "paga"}
+{"front": "We pay\n(present)", "back": "pagamos"}
+{"front": "They pay\n(present)", "back": "pagan"}
+{"front": "I think\n(irregular present)", "back": "pienso"}
+{"front": "You think\n(irregular present)", "back": "piensas"}
+{"front": "He/She/It thinks\n(irregular present)", "back": "piensa"}
+{"front": "We think\n(present)", "back": "pensamos"}
+{"front": "They think\n(irregular present)", "back": "piensan"}
+{"front": "I lose\n(irregular present)", "back": "pierdo"}
+{"front": "You lose\n(irregular present)", "back": "pierdes"}
+{"front": "He/She/It loses\n(irregular present)", "back": "pierde"}
+{"front": "We lose\n(irregular present)", "back": "perdemos"}
+{"front": "They lose\n(irregular present)", "back": "pierden"}
+{"front": "I can\n(irregular present)", "back": "puedo"}
+{"front": "You can\n(irregular present)", "back": "puedes"}
+{"front": "He/She/It can\n(irregular present)", "back": "puede"}
+{"front": "We can\n(present)", "back": "podemos"}
+{"front": "They can\n(irregular present)", "back": "pueden"}
+{"front": "I put\n(irregular present)", "back": "pongo"}
+{"front": "You put\n(present)", "back": "pones"}
+{"front": "He/She/It puts\n(present)", "back": "pone"}
+{"front": "We put\n(present)", "back": "ponemos"}
+{"front": "They put\n(present)", "back": "ponen"}
+{"front": "I stay (remain)\n(present)", "back": "quedo"}
+{"front": "You stay (remain)\n(present)", "back": "quedas"}
+{"front": "He/She/It stays (remains)\n(present)", "back": "queda"}
+{"front": "We stay (remain)\n(present)", "back": "quedamos"}
+{"front": "They stay (remain)\n(present)", "back": "quedan"}
+{"front": "I want\n(irregular present)", "back": "quiero"}
+{"front": "You want\n(irregular present)", "back": "quieres"}
+{"front": "He/She/It wants\n(irregular present)", "back": "quiere"}
+{"front": "We want\n(present)", "back": "queremos"}
+{"front": "They want\n(irregular present)", "back": "quieren"}
+{"front": "I know (have knowledge of)\n(irregular present)", "back": "s\u00e9"}
+{"front": "You know (have knowledge of)\n(irregular present)", "back": "sabes"}
+{"front": "He/She/It knows (has knowledge of)\n(present)", "back": "sabe"}
+{"front": "We know (have knowledge of)\n(present)", "back": "sabemos"}
+{"front": "They know (have knowledge of)\n(present)", "back": "saben"}
+{"front": "I leave\n(irregular present)", "back": "salgo"}
+{"front": "You leave\n(present)", "back": "sales"}
+{"front": "He/She/It leaves\n(present)", "back": "sale"}
+{"front": "We leave\n(present)", "back": "salimos"}
+{"front": "They leave\n(present)", "back": "salen"}
+{"front": "I feel\n(irregular present)", "back": "siento"}
+{"front": "You feel\n(irregular present)", "back": "sientes"}
+{"front": "He/She/It feels\n(irregular present)", "back": "siente"}
+{"front": "We feel\n(present)", "back": "sentimos"}
+{"front": "They feel\n(irregular present)", "back": "sienten"}
+{"front": "I am (permanent condition)\n(irregular present)", "back": "soy"}
+{"front": "You are (permanent condition)\n(irregular present)", "back": "eres"}
+{"front": "He/She/It is (permanent condition)\n(irregular present)", "back": "es"}
+{"front": "We are (permanent condition)\n(irregular present)", "back": "somos"}
+{"front": "They are (permanent condition)\n(irregular present)", "back": "son"}
+{"front": "I have (possess)\n(irregular present)", "back": "tengo"}
+{"front": "You have (possess)\n(irregular present)", "back": "tienes"}
+{"front": "He/She/It has (possess)\n(irregular present)", "back": "tiene"}
+{"front": "We have (possess)\n(present)", "back": "tenemos"}
+{"front": "They have (possess)\n(irregular present)", "back": "tienen"}
+{"front": "I take in (drink)\n(present)", "back": "tomo"}
+{"front": "You take in (drink)\n(present)", "back": "tomas"}
+{"front": "He/She/It takes in (drinks)\n(present)", "back": "toma"}
+{"front": "We take in (drink)\n(present)", "back": "tomamos"}
+{"front": "They take in (drink)\n(present)", "back": "toman"}
+{"front": "I bring\n(irregular present)", "back": "traigo"}
+{"front": "You&nbsp;bring\n(present)", "back": "traes"}
+{"front": "He/She/It&nbsp;brings\n(present)", "back": "trae"}
+{"front": "We&nbsp;bring\n(present)", "back": "traemos"}
+{"front": "They&nbsp;bring\n(present)", "back": "traen"}
+{"front": "I come\n(irregular present)", "back": "vengo"}
+{"front": "You come\n(irregular present)", "back": "vienes"}
+{"front": "He/She/It comes\n(irregular present)", "back": "viene"}
+{"front": "We come\n(present)", "back": "venimos"}
+{"front": "They come\n(irregular present)", "back": "vienen"}
+{"front": "I see\n(irregular present)", "back": "veo"}
+{"front": "You see\n(present)", "back": "ves"}
+{"front": "He/She/It sees\n(present)", "back": "ve"}
+{"front": "We see\n(present)", "back": "vemos"}
+{"front": "They see\n(present)", "back": "ven"}
+{"front": "I live\n(present)", "back": "vivo"}
+{"front": "You live\n(present)", "back": "vives"}
+{"front": "He/She/It lives\n(present)", "back": "vive"}
+{"front": "We live\n(present)", "back": "vivimos"}
+{"front": "They live\n(present)", "back": "viven"}
+{"front": "I return (turn around)\n(irregular present)", "back": "vuelvo"}
+{"front": "You return (turn around)\n(irregular present)", "back": "vuelves"}
+{"front": "He/She/It returns (turns around)\n(irregular present)", "back": "vuelve"}
+{"front": "We return (turn around)\n(present)", "back": "volvemos"}
+{"front": "They return (turn around)\n(irregular present)", "back": "vuelven"}
+{"front": "I finished\n(preterit)", "back": "acab\u00e9"}
+{"front": "You finished\n(preterit)", "back": "acabaste"}
+{"front": "He/She/It finished\n(preterit)", "back": "acab\u00f3"}
+{"front": "We finished\n(preterit)", "back": "acabamos"}
+{"front": "They finished\n(preterit)", "back": "acabaron"}
+{"front": "I walked\n(irregular preterit)", "back": "anduve"}
+{"front": "You walked\n(irregular preterit)", "back": "anduviste"}
+{"front": "He/She/It walked\n(irregular preterit)", "back": "anduvo"}
+{"front": "We walked\n(irregular preterit)", "back": "anduvimos"}
+{"front": "They walked\n(irregular preterit)", "back": "anduvieron"}
+{"front": "I learned\n(preterit)", "back": "aprend\u00ed"}
+{"front": "You learned\n(preterit)", "back": "aprendiste"}
+{"front": "He/She/It learned\n(preterit)", "back": "aprendi\u00f3"}
+{"front": "We learned\n(preterit)", "back": "aprendimos"}
+{"front": "They learned\n(preterit)", "back": "aprendieron"}
+{"front": "I fell\n(preterit)", "back": "ca\u00ed"}
+{"front": "You fell\n(irregular preterit)", "back": "ca\u00edste"}
+{"front": "He/She/It fell\n(irregular preterit)", "back": "cay\u00f3"}
+{"front": "We fell\n(irregular preterit)", "back": "ca\u00edmos"}
+{"front": "They fell\n(irregular preterit)", "back": "cayeron"}
+{"front": "I sang\n(preterit)", "back": "cant\u00e9"}
+{"front": "You sang\n(preterit)", "back": "cantaste"}
+{"front": "He/She/It sang\n(preterit)", "back": "cant\u00f3"}
+{"front": "We sang\n(preterit)", "back": "cantamos"}
+{"front": "They sang\n(preterit)", "back": "cantaron"}
+{"front": "I began\n(irregular preterit)", "back": "comenc\u00e9"}
+{"front": "You began\n(preterit)", "back": "comenzaste"}
+{"front": "He/She/It began\n(preterit)", "back": "comenz\u00f3"}
+{"front": "We began\n(preterit)", "back": "comenzamos"}
+{"front": "They began\n(preterit)", "back": "comenzaron"}
+{"front": "I ate\n(present)", "back": "com\u00ed"}
+{"front": "You ate\n(preterit)", "back": "comiste"}
+{"front": "He/She/It ate\n(preterit)", "back": "comi\u00f3"}
+{"front": "We ate\n(preterit)", "back": "comimos"}
+{"front": "They ate\n(preterit)", "back": "comieron"}
+{"front": "I bought\n(preterit)", "back": "compr\u00e9"}
+{"front": "You bought\n(preterit)", "back": "compraste"}
+{"front": "He/She/It bought\n(preterit)", "back": "compr\u00f3"}
+{"front": "We bought\n(preterit)", "back": "compramos"}
+{"front": "They bought\n(preterit)", "back": "compraron"}
+{"front": "I knew (was fimiliar with)\n(preterit)", "back": "conoc\u00ed"}
+{"front": "You knew (were fimiliar with)\n(preterit)", "back": "conociste"}
+{"front": "He/She/It knew (was fimiliar with)\n(preterit)", "back": "conoci\u00f3"}
+{"front": "We knew (were fimiliar with)\n(preterit)", "back": "conocimos"}
+{"front": "They knew (were fimiliar with)\n(preterit)", "back": "conocieron"}
+{"front": "I built\n(preterit)", "back": "constru\u00ed"}
+{"front": "You built\n(preterit)", "back": "construiste"}
+{"front": "He/She/It built\n(irregular preterit)", "back": "construy\u00f3"}
+{"front": "We built\n(preterit)", "back": "construimos"}
+{"front": "They built\n(irregular preterit)", "back": "construyeron"}
+{"front": "I told/counted\n(preterit)", "back": "cont\u00e9"}
+{"front": "You told/counted\n(preterit)", "back": "contaste"}
+{"front": "He/She/It told/counted\n(preterit)", "back": "cont\u00f3"}
+{"front": "We told/counted\n(preterit)", "back": "contamos"}
+{"front": "They told/counted\n(preterit)", "back": "contaron"}
+{"front": "I believed\n(preterit)", "back": "cre\u00ed"}
+{"front": "You believed\n(irregular preterit)", "back": "cre\u00edste"}
+{"front": "He/She/It believed\n(irregular preterit)", "back": "crey\u00f3"}
+{"front": "We believed\n(preterit)", "back": "cre\u00edmos"}
+{"front": "They believed\n(irregular preterit)", "back": "creyeron"}
+{"front": "I gave\n(irregular preterit)", "back": "di"}
+{"front": "You gave\n(irregular preterit)", "back": "diste"}
+{"front": "He/She/It gave\n(irregular preterit)", "back": "dio"}
+{"front": "We gave\n(irregular preterit)", "back": "dimos"}
+{"front": "They gave\n(irregular preterit)", "back": "dieron"}
+{"front": "I owed (had to do something)\n(preterit)", "back": "deb\u00ed"}
+{"front": "You owed (had to do something)\n(preterit)", "back": "debiste"}
+{"front": "He/She/It owed (had to do something) \n(preterit)", "back": "debi\u00f3"}
+{"front": "We owed (had to do something)\n(preterit)", "back": "debimos"}
+{"front": "They owed (had to do something)\n(preterit)", "back": "debieron"}
+{"front": "I said\n(irregular preterit)", "back": "dije"}
+{"front": "You said\n(irregular preterit)", "back": "dijiste"}
+{"front": "He/She/It said\n(irregular preterit)", "back": "dijo"}
+{"front": "We said\n(irregular preterit)", "back": "dijimos"}
+{"front": "They said\n(irregular preterit)", "back": "dijeron"}
+{"front": "I slept\n(preterit)", "back": "dorm\u00ed"}
+{"front": "You slept\n(preterit)", "back": "dormiste"}
+{"front": "He/She/It slept\n(irregular preterit)", "back": "durmi\u00f3"}
+{"front": "We slept\n(preterit)", "back": "dormimos"}
+{"front": "They slept\n(irregular preterit)", "back": "durmieron"}
+{"front": "I entered\n(preterit)", "back": "entr\u00e9"}
+{"front": "You entered\n(preterit)", "back": "entraste"}
+{"front": "He/She/It entered\n(preterit)", "back": "entr\u00f3"}
+{"front": "We entered\n(preterit)", "back": "entramos"}
+{"front": "They entered\n(preterit)", "back": "entraron"}
+{"front": "I wrote\n(preterit)", "back": "escrib\u00ed"}
+{"front": "You wrote\n(preterit)", "back": "escribiste"}
+{"front": "He/She/It wrote\n(preterit)", "back": "escribi\u00f3"}
+{"front": "We wrote\n(preterit)", "back": "escribimos"}
+{"front": "They wrote\n(preterit)", "back": "escribieron"}
+{"front": "I was (temporary condition)\n(irregular preterit)", "back": "estuve"}
+{"front": "You were (temporary condition)\n(irregular preterit)", "back": "estuviste"}
+{"front": "He/She/It was (temporary condition)\n(irregular preterit)", "back": "estuvo"}
+{"front": "We were (temporary condition)\n(irregular present)", "back": "estuvimos"}
+{"front": "They were (temporary condition)\n(irregular preterit)", "back": "estuvieron"}
+{"front": "I studied\n(preterit)", "back": "estudi\u00e9"}
+{"front": "You studied\n(preterit)", "back": "estudiaste"}
+{"front": "He/She/It studied\n(preterit)", "back": "estudi\u00f3"}
+{"front": "We studied\n(preterit)", "back": "estudiamos"}
+{"front": "They studied\n(preterit)", "back": "estudiaron"}
+{"front": "I liked\n(preterit)", "back": "gust\u00e9"}
+{"front": "You liked\n(preterit)", "back": "gustaste"}
+{"front": "He/She/It liked\n(preterit)", "back": "gust\u00f3"}
+{"front": "We liked\n(preterit)", "back": "gustamos"}
+{"front": "They liked\n(preterit)", "back": "gustaron"}
+{"front": "I had (haber)\n(irregular preterit)", "back": "hube"}
+{"front": "You had (haber)\n(irregular preterit)", "back": "hubiste"}
+{"front": "He/She/It had (haber)\n(irregular present)", "back": "hubo"}
+{"front": "We had (haber)\n(irregular preterit)", "back": "hubimos"}
+{"front": "They had (haber)\n(irregular preterit)", "back": "hubieron"}
+{"front": "I spoke\n(preterit)", "back": "habl\u00e9"}
+{"front": "You spoke\n(preterit)", "back": "hablaste"}
+{"front": "He/She/It spoke\n(preterit)", "back": "habl\u00f3"}
+{"front": "We spoke\n(preterit)", "back": "hablamos"}
+{"front": "They spoke\n(preterit)", "back": "hablaron"}
+{"front": "I did\n(preterit)", "back": "hice"}
+{"front": "You did\n(preterit)", "back": "hiciste"}
+{"front": "He/She/It did\n(irregular preterit)", "back": "hizo"}
+{"front": "We did\n(irregular preterit)", "back": "hicimos"}
+{"front": "They did\n(irregular preterit)", "back": "hicieron"}
+{"front": "I went\n(irregular preterit)", "back": "fui"}
+{"front": "You went\n(irregular preterit)", "back": "fuiste"}
+{"front": "He/She/It went\n(irregular preterit)", "back": "fue"}
+{"front": "We went\n(irregular preterit)", "back": "fuimos"}
+{"front": "They went\n(irregular preterit)", "back": "fueron"}
+{"front": "I read (past tense)\n(preterit)", "back": "le\u00ed"}
+{"front": "You read (past tense)\n(irregular preterit)", "back": "le\u00edste"}
+{"front": "He/She/It read (past tense)\n(irregular preterit)", "back": "ley\u00f3"}
+{"front": "We read (past tense)\n(irregular preterit)", "back": "le\u00edmos"}
+{"front": "They read (past tense)\n(irregular preterit)", "back": "leyeron"}
+{"front": "I called\n(preterit)", "back": "llam\u00e9"}
+{"front": "You called\n(preterit)", "back": "llamaste"}
+{"front": "He/She/It called\n(preterit)", "back": "llam\u00f3"}
+{"front": "We called\n(preterit)", "back": "llamamos"}
+{"front": "They called\n(preterit)", "back": "llamaron"}
+{"front": "I took\n(preterit)", "back": "llev\u00e9"}
+{"front": "You took\n(preterit)", "back": "llevaste"}
+{"front": "He/She/It took\n(preterit)", "back": "llev\u00f3"}
+{"front": "We took\n(preterit)", "back": "llevamos"}
+{"front": "They took\n(preterit)", "back": "llevaron"}
+{"front": "I drove\n(preterit)", "back": "manej\u00e9"}
+{"front": "You drove\n(preterit)", "back": "manejaste"}
+{"front": "He/She/It drove\n(preterit)", "back": "manej\u00f3"}
+{"front": "We drove\n(preterit)", "back": "manejamos"}
+{"front": "They drove\n(preterit)", "back": "manejaron"}
+{"front": "I looked\n(preterit)", "back": "mir\u00e9"}
+{"front": "You looked\n(preterit)", "back": "miraste"}
+{"front": "He/She/It looked\n(preterit)", "back": "mir\u00f3"}
+{"front": "We looked\n(preterit)", "back": "miramos"}
+{"front": "They looked\n(preterit)", "back": "miraron"}
+{"front": "I heard\n(preterit)", "back": "o\u00ed"}
+{"front": "You heard\n(irregular preterit)", "back": "o\u00edste"}
+{"front": "He/She/It heard\n(irregular preterit)", "back": "oy\u00f3"}
+{"front": "We heard\n(irregular preterit)", "back": "o\u00edmos"}
+{"front": "They heard\n(irregular preterit)", "back": "oyeron"}
+{"front": "I paid\n(irregular preterit)", "back": "pagu\u00e9"}
+{"front": "You paid\n(preterit)", "back": "pagaste"}
+{"front": "He/She/It paid\n(preterit)", "back": "pag\u00f3"}
+{"front": "We paid\n(preterit)", "back": "pagamos"}
+{"front": "They paid\n(preterit)", "back": "pagaron"}
+{"front": "I thought\n(preterit)", "back": "pens\u00e9"}
+{"front": "You thought\n(preterit)", "back": "pensaste"}
+{"front": "He/She/It thought\n(preterit)", "back": "pens\u00f3"}
+{"front": "We thought\n(preterit)", "back": "pensamos"}
+{"front": "They thought\n(preterit)", "back": "pensaron"}
+{"front": "I lost\n(preterit)", "back": "perd\u00ed"}
+{"front": "You lost\n(preterit)", "back": "perdiste"}
+{"front": "He/She/It lost\n(preterit)", "back": "perdi\u00f3"}
+{"front": "We lost\n(preterit)", "back": "perdimos"}
+{"front": "They lost\n(preterit)", "back": "perdieron"}
+{"front": "I could (was able to)\n(irregular preterit)", "back": "pude"}
+{"front": "You could (were able to)\n(irregular preterit)", "back": "pudiste"}
+{"front": "He/She/It could (was able to)\n(irregular preterit)", "back": "pudo"}
+{"front": "We could (were able to)\n(irregular preterit)", "back": "pudimos"}
+{"front": "They could (were able to)\n(irregular preterit)", "back": "pudieron"}
+{"front": "I put (past tense)\n(irregular preterit)", "back": "puse"}
+{"front": "You put (past tense)\n(irregular preterit)", "back": "pusiste"}
+{"front": "He/She/It put (past tense)\n(irregular preterit)", "back": "puso"}
+{"front": "We put (past tense)\n(irregular preterit)", "back": "pusimos"}
+{"front": "They put (past tense)\n(irregular preterit)", "back": "pusieron"}
+{"front": "I stayed (remained)\n(preterit)", "back": "qued\u00e9"}
+{"front": "You stayed (remained)\n(preterit)", "back": "quedaste"}
+{"front": "He/She/It stayed (remained)\n(preterit)", "back": "qued\u00f3"}
+{"front": "We stayed (remained)\n(preterit)", "back": "quedamos"}
+{"front": "They stayed (remained)\n(preterit)", "back": "quedaron"}
+{"front": "I wanted\n(irregular preterit)", "back": "quise"}
+{"front": "You wanted\n(irregular preterit)", "back": "quisiste"}
+{"front": "He/She/It wanted\n(irregular preterit)", "back": "quiso"}
+{"front": "We wanted\n(irregular preterit)", "back": "quisimos"}
+{"front": "They wanted\n(irregular preterit)", "back": "quisieron"}
+{"front": "I knew (had knowledge of)\n(irregular preterit)", "back": "supe"}
+{"front": "You knew (had knowledge of)\n(irregular preterit)", "back": "supiste"}
+{"front": "He/She/It knew (had knowledge of)\n(irregular preterit)", "back": "supo"}
+{"front": "We knew (had knowledge of)\n(irregular preterit)", "back": "supimos"}
+{"front": "They knew (had knowledge of)\n(irregular preterit)", "back": "supieron"}
+{"front": "I left\n(preterit)", "back": "sal\u00ed"}
+{"front": "You left\n(preterit)", "back": "saliste"}
+{"front": "He/She/It left\n(preterit)", "back": "sali\u00f3"}
+{"front": "We left\n(preterit)", "back": "salimos"}
+{"front": "They left\n(preterit)", "back": "salieron"}
+{"front": "I felt\n(preterit)", "back": "sent\u00ed"}
+{"front": "You felt\n(preterit)", "back": "sentiste"}
+{"front": "He/She/It felt\n(irregular preterit)", "back": "sinti\u00f3"}
+{"front": "We felt\n(preterit)", "back": "sentimos"}
+{"front": "They felt\n(irregular preterit)", "back": "sintieron"}
+{"front": "I was (permanent condition)\n(irregular preterit)", "back": "fui"}
+{"front": "You were (permanent condition)\n(irregular preterit)", "back": "fuiste"}
+{"front": "He/She/It was (permanent condition)\n(irregular preterit)", "back": "fue"}
+{"front": "We were (permanent condition)\n(irregular preterit)", "back": "fuimos"}
+{"front": "They were (permanent condition)\n(irregular preterit)", "back": "fueron"}
+{"front": "I had (tener)\n(irregular preterit)", "back": "tuve"}
+{"front": "You had (tener)\n(irregular preterit)", "back": "tuviste"}
+{"front": "He/She/It had (tener)\n(irregular preterit)", "back": "tuvo"}
+{"front": "We had (tener)\n(irregular preterit)", "back": "tuvimos"}
+{"front": "They had (tener)\n(irregular preterit)", "back": "tuvieron"}
+{"front": "I took in (drank)\n(preterit)", "back": "tom\u00e9"}
+{"front": "You took in (drank)\n(preterit)", "back": "tomaste"}
+{"front": "He/She/It took in (drank)\n(preterit)", "back": "tom\u00f3"}
+{"front": "We took in (drank)\n(preterit)", "back": "tomamos"}
+{"front": "They took in (drank)\n(preterit)", "back": "tomaron"}
+{"front": "I brought\n(irregular preterit)", "back": "traje"}
+{"front": "You brought\n(irregular preterit)", "back": "trajiste"}
+{"front": "He/She/It brought\n(irregular preterit)", "back": "trajo"}
+{"front": "We&nbsp;brought\n(irregular preterit)", "back": "trajimos"}
+{"front": "They brought\n(irregular preterit)", "back": "trajeron"}
+{"front": "I came\n(irregular preterit)", "back": "vine"}
+{"front": "You came\n(irregular preterit)", "back": "viniste"}
+{"front": "He/She/It came\n(irregular preterit)", "back": "vino"}
+{"front": "We came\n(irregular preterit)", "back": "vinimos"}
+{"front": "They came\n(irregular preterit)", "back": "vinieron"}
+{"front": "I saw\n(irregular preterit)", "back": "vi"}
+{"front": "You saw\n(preterit)", "back": "viste"}
+{"front": "He/She/It saw\n(irregular preterit)", "back": "vio"}
+{"front": "We saw\n(preterit)", "back": "vimos"}
+{"front": "They saw\n(preterit)", "back": "vieron"}
+{"front": "I lived\n(preterit)", "back": "viv\u00ed"}
+{"front": "You lived\n(preterit)", "back": "viviste"}
+{"front": "He/She/It lived\n(preterit)", "back": "vivi\u00f3"}
+{"front": "We lived\n(preterit)", "back": "vivimos"}
+{"front": "They lived\n(preterit)", "back": "vivieron"}
+{"front": "I returned (truned around)\n(preterit)", "back": "volv\u00ed"}
+{"front": "You returned (truned around)\n(preterit)", "back": "volviste"}
+{"front": "He/She/It returned (truned around)\n(preterit)", "back": "volvi\u00f3"}
+{"front": "We returned (truned around)\n(preterit)", "back": "volvimos"}
+{"front": "They returned (truned around)\n(preterit)", "back": "volvieron"}
+{"front": "I finish\n(present)", "back": "acabo"}
+{"front": "You finish\n(present)", "back": "acabas"}
+{"front": "He/She/It finishes\n(present)", "back": "acaba"}
+{"front": "We finish\n(present)", "back": "acabamos"}
+{"front": "They finish\n(present)", "back": "acaban"}
+{"front": "I take out (remove)\n(present)", "back": "saco"}
+{"front": "You take out (remove)\n(present)", "back": "sacas"}
+{"front": "He/She/It takes out (removes)\n(present)", "back": "saca"}
+{"front": "We take out (remove)\n(present)", "back": "sacamos"}
+{"front": "They take out (remove)\n(present)", "back": "sacan"}
+{"front": "I took out (removed)\n(irregular preterit)", "back": "saqu\u00e9"}
+{"front": "You took out (removed)\n(preterit)", "back": "sacaste"}
+{"front": "He/She/It took out (removed)\n(preterit)", "back": "sac\u00f3"}
+{"front": "We took out (removed)\n(preterit)", "back": "sacamos"}
+{"front": "They took out (removed)\n(preterit)", "back": "sacaron"}
+{"front": "I will finish\n(future)", "back": "acabar\u00e9"}
+{"front": "You will finish\n(future)", "back": "acabar\u00e1s"}
+{"front": "He/She/It will finish\n(future)", "back": "acabar\u00e1"}
+{"front": "We will finish\n(future)", "back": "acabaremos"}
+{"front": "They will finish\n(future)", "back": "acabar\u00e1n"}
+{"front": "I will walk\n(future)", "back": "andar\u00e9"}
+{"front": "You will walk\n(future)", "back": "andar\u00e1s"}
+{"front": "He/She/It will walk\n(future)", "back": "andar\u00e1"}
+{"front": "We will walk\n(future)", "back": "andaremos"}
+{"front": "They will walk\n(future)", "back": "andar\u00e1n"}
+{"front": "I will learn\n(future)", "back": "aprender\u00e9"}
+{"front": "You will learn\n(future)", "back": "aprender\u00e1s"}
+{"front": "He/She/It will learn\n(future)", "back": "aprender\u00e1"}
+{"front": "We will learn\n(future)", "back": "aprenderemos"}
+{"front": "They will learn\n(future)", "back": "aprender\u00e1n"}
+{"front": "I will fall\n(future)", "back": "caer\u00e9"}
+{"front": "You will fall\n(future)", "back": "caer\u00e1s"}
+{"front": "He/She/It will fall\n(future)", "back": "caer\u00e1"}
+{"front": "We will fall\n(future)", "back": "caeremos"}
+{"front": "I will sing\n(future)", "back": "cantar\u00e9"}
+{"front": "You will sing\n(future)", "back": "cantar\u00e1s"}
+{"front": "He/She/It will sing\n(future)", "back": "cantar\u00e1"}
+{"front": "We will sing\n(future)", "back": "cantaremos"}
+{"front": "They will sing\n(future)", "back": "cantar\u00e1n"}
+{"front": "I will begin\n(future)", "back": "comenzar\u00e9"}
+{"front": "You will begin\n(future)", "back": "comenzar\u00e1s"}
+{"front": "He/She/It will begin\n(future)", "back": "comenzar\u00e1"}
+{"front": "We will begin\n(future)", "back": "comenzaremos"}
+{"front": "They will begin\n(future)", "back": "comenzar\u00e1n"}
+{"front": "I will eat\n(future)", "back": "comer\u00e9"}
+{"front": "You will eat\n(future)", "back": "comer\u00e1s"}
+{"front": "He/She/It will eat\n(future)", "back": "comer\u00e1"}
+{"front": "We will eat\n(future)", "back": "comeremos"}
+{"front": "They will eat\n(future)", "back": "comer\u00e1n"}
+{"front": "I will buy\n(future)", "back": "comprar\u00e9"}
+{"front": "You will buy\n(future)", "back": "comprar\u00e1s"}
+{"front": "He/She/It will buy\n(future)", "back": "comprar\u00e1"}
+{"front": "We will buy\n(future)", "back": "compraremos"}
+{"front": "They will buy\n(future)", "back": "comprar\u00e1n"}
+{"front": "I will know (will be fimiliar with)\n(future)", "back": "conocer\u00e9"}
+{"front": "You will know (will be fimiliar with)\n(future)", "back": "conocer\u00e1s"}
+{"front": "He/She/It will know (will be fimiliar with)\n(future)", "back": "conocer\u00e1"}
+{"front": "We will know (will be fimiliar with)\n(future)", "back": "conoceremos"}
+{"front": "They will know (will be fimiliar with)\n(future)", "back": "conocer\u00e1n"}
+{"front": "I will build\n(future)", "back": "construir\u00e9"}
+{"front": "You will build\n(future)", "back": "construir\u00e1s"}
+{"front": "He/She/It will build\n(future)", "back": "construir\u00e1"}
+{"front": "We will build\n(future)", "back": "construiremos"}
+{"front": "They will build\n(future)", "back": "construir\u00e1n"}
+{"front": "I will tell/count\n(future)", "back": "contar\u00e9"}
+{"front": "You will tell/count\n(future)", "back": "contar\u00e1s"}
+{"front": "He/She/It will tell/count\n(future)", "back": "contar\u00e1"}
+{"front": "We will tell/count\n(future)", "back": "contaremos"}
+{"front": "They will tell/count\n(future)", "back": "contar\u00e1n"}
+{"front": "I will believe\n(future)", "back": "creer\u00e9"}
+{"front": "You will believe\n(future)", "back": "creer\u00e1s"}
+{"front": "He/She/It will believe\n(future)", "back": "creer\u00e1"}
+{"front": "We will believe\n(future)", "back": "creeremos"}
+{"front": "They will believe\n(future)", "back": "creer\u00e1n"}
+{"front": "I will give\n(future)", "back": "dar\u00e9"}
+{"front": "You will give\n(future)", "back": "dar\u00e1s"}
+{"front": "He/She/It will give\n(future)", "back": "dar\u00e1"}
+{"front": "We will give\n(future)", "back": "daremos"}
+{"front": "They will give\n(future)", "back": "dar\u00e1n"}
+{"front": "I will owe (will have to do something)\n(future)", "back": "deber\u00e9"}
+{"front": "You will owe (will have to do something)\n(future)", "back": "deber\u00e1s"}
+{"front": "He/She/It will owe (will have to do something)\n(future)", "back": "deber\u00e1"}
+{"front": "We will owe (will have to do something)\n(future)", "back": "deberemos"}
+{"front": "They will owe (will have to do something)\n(future)", "back": "deber\u00e1n"}
+{"front": "I will say\n(future irregular)", "back": "dir\u00e9"}
+{"front": "You will say\n(future irregular)", "back": "dir\u00e1s"}
+{"front": "He/She/It will say\n(future irregular)", "back": "dir\u00e1"}
+{"front": "We will say\n(future irregular)", "back": "diremos"}
+{"front": "They will say\n(future irregular)", "back": "dir\u00e1n"}
+{"front": "I will sleep\n(future)", "back": "dormir\u00e9"}
+{"front": "You will sleep\n(future)", "back": "dormir\u00e1s"}
+{"front": "He/She/It will sleep\n(future)", "back": "dormir\u00e1"}
+{"front": "We will sleep\n(future)", "back": "dormiremos"}
+{"front": "They will sleep\n(future)", "back": "dormir\u00e1n"}
+{"front": "I will enter\n(future)", "back": "entrar\u00e9"}
+{"front": "You will enter\n(future)", "back": "entrar\u00e1s"}
+{"front": "He/She/It will enter\n(future)", "back": "entrar\u00e1"}
+{"front": "We will enter\n(future)", "back": "entraremos"}
+{"front": "They will enter\n(future)", "back": "entrar\u00e1n"}
+{"front": "I will write\n(future)", "back": "escribir\u00e9"}
+{"front": "You will write\n(future)", "back": "escribir\u00e1s"}
+{"front": "He/She/It will write\n(future)", "back": "escribir\u00e1"}
+{"front": "We will write\n(future)", "back": "escribiremos"}
+{"front": "They will write\n(future)", "back": "escribir\u00e1n"}
+{"front": "I will be (temporary condition)\n(future)", "back": "estar\u00e9"}
+{"front": "You will be (temporary condition)\n(future)", "back": "estar\u00e1s"}
+{"front": "He/She/It will be (temporary condition)\n(future)", "back": "estar\u00e1"}
+{"front": "We will be (temporary condition)\n(future)", "back": "estaremos"}
+{"front": "They will be (temporary condition)\n(future)", "back": "estar\u00e1n"}
+{"front": "I will study\n(future)", "back": "estudiar\u00e9"}
+{"front": "You will study\n(future)", "back": "estudiar\u00e1s"}
+{"front": "He/She/It will study\n(future)", "back": "estudiar\u00e1"}
+{"front": "We will study\n(future)", "back": "estudiaremos"}
+{"front": "They will study\n(future)", "back": "estudiar\u00e1n"}
+{"front": "I will like\n(future)", "back": "gustar\u00e9"}
+{"front": "You will like\n(future)", "back": "gustar\u00e1s"}
+{"front": "He/She/It will like\n(future)", "back": "gustar\u00e1"}
+{"front": "We will like\n(future)", "back": "gustaremos"}
+{"front": "They will like\n(future)", "back": "gustar\u00e1n"}
+{"front": "I will have (haber)\n(future irregular)", "back": "habr\u00e9"}
+{"front": "You will have (haber)\n(future irregular)", "back": "habr\u00e1s"}
+{"front": "He/She/It will have (haber)\n(future irregular)", "back": "habr\u00e1"}
+{"front": "We will have (haber)\n(future irregular)", "back": "habremos"}
+{"front": "They will have (haber)\n(future irregular)", "back": "habr\u00e1n"}
+{"front": "I will speak\n(future)", "back": "hablar\u00e9"}
+{"front": "You will speak\n(future)", "back": "hablar\u00e1s"}
+{"front": "He/She/It will speak\n(future)", "back": "hablar\u00e1"}
+{"front": "We will speak\n(future)", "back": "hablaremos"}
+{"front": "They will speak\n(future)", "back": "hablar\u00e1n"}
+{"front": "I will do\n(future irregular)", "back": "har\u00e9"}
+{"front": "You will do\n(future irregular)", "back": "har\u00e1s"}
+{"front": "He/She/It will do\n(future irregular)", "back": "har\u00e1"}
+{"front": "We will do\n(future irregular)", "back": "haremos"}
+{"front": "They will do\n(future irregular)", "back": "har\u00e1n"}
+{"front": "I will go\n(future)", "back": "ir\u00e9"}
+{"front": "You will go\n(future)", "back": "ir\u00e1s"}
+{"front": "He/She/It will go\n(future)", "back": "ir\u00e1"}
+{"front": "We will go\n(future)", "back": "iremos"}
+{"front": "They will go\n(future)", "back": "ir\u00e1n"}
+{"front": "I will read\n(future)", "back": "leer\u00e9"}
+{"front": "You will read\n(future)", "back": "leer\u00e1s"}
+{"front": "He/She/It will read\n(future)", "back": "leer\u00e1"}
+{"front": "We will read\n(future)", "back": "leeremos"}
+{"front": "They will read\n(future)", "back": "leer\u00e1n"}
+{"front": "I will call\n(future)", "back": "llamar\u00e9"}
+{"front": "You will call\n(future)", "back": "llamar\u00e1s"}
+{"front": "He/She/It will call\n(future)", "back": "llamar\u00e1"}
+{"front": "We will call\n(future)", "back": "llamaremos"}
+{"front": "They will call\n(future)", "back": "llamar\u00e1n"}
+{"front": "I will take\n(future)", "back": "llevar\u00e9"}
+{"front": "You will take\n(future)", "back": "llevar\u00e1s"}
+{"front": "He/She/It will take\n(future)", "back": "llevar\u00e1"}
+{"front": "We will take\n(future)", "back": "llevaremos"}
+{"front": "They will take\n(future)", "back": "llevar\u00e1n"}
+{"front": "I will drive\n(future)", "back": "manejar\u00e9"}
+{"front": "You will drive\n(future)", "back": "manejar\u00e1s"}
+{"front": "He/She/It will drive\n(future)", "back": "manejar\u00e1"}
+{"front": "We will drive\n(future)", "back": "manejaremos"}
+{"front": "I will look\n(future)", "back": "mirar\u00e9"}
+{"front": "You will look\n(future)", "back": "mirar\u00e1s"}
+{"front": "He/She/It will look\n(future)", "back": "mirar\u00e1"}
+{"front": "We will look\n(future)", "back": "miraremos"}
+{"front": "They will look\n(future)", "back": "mirar\u00e1n"}
+{"front": "I will hear\n(future)", "back": "oir\u00e9"}
+{"front": "You will hear\n(future)", "back": "oir\u00e1s"}
+{"front": "He/She/It will hear\n(future)", "back": "oir\u00e1"}
+{"front": "We will hear\n(future)", "back": "oiremos"}
+{"front": "They will hear\n(future)", "back": "oir\u00e1n"}
+{"front": "I will pay\n(future)", "back": "pagar\u00e9"}
+{"front": "You will pay\n(future)", "back": "pagar\u00e1s"}
+{"front": "He/She/It will pay\n(future)", "back": "pagar\u00e1"}
+{"front": "We will pay\n(future)", "back": "pagaremos"}
+{"front": "They will pay\n(future)", "back": "pagar\u00e1n"}
+{"front": "I will think\n(future)", "back": "pensar\u00e9"}
+{"front": "You will think\n(future)", "back": "pensar\u00e1s"}
+{"front": "He/She/It will think\n(future)", "back": "pensar\u00e1"}
+{"front": "We will think\n(future)", "back": "pensaremos"}
+{"front": "They will think\n(future)", "back": "pensar\u00e1n"}
+{"front": "I will lose\n(future)", "back": "perder\u00e9"}
+{"front": "You will lose\n(future)", "back": "perder\u00e1s"}
+{"front": "He/She/It will lose\n(future)", "back": "perder\u00e1"}
+{"front": "We will lose\n(future)", "back": "perderemos"}
+{"front": "They will lose\n(future)", "back": "perder\u00e1n"}
+{"front": "I will be able to\n(future irregular)", "back": "podr\u00e9"}
+{"front": "You will be able to\n(future irregular)", "back": "podr\u00e1s"}
+{"front": "He/She/It will be able to\n(future irregular)", "back": "podr\u00e1"}
+{"front": "We will be able to\n(future irregular)", "back": "podremos"}
+{"front": "They will be able to\n(future irregular)", "back": "podr\u00e1n"}
+{"front": "I will put\n(future irregular)", "back": "pondr\u00e9"}
+{"front": "You will put\n(future irregular)", "back": "pondr\u00e1s"}
+{"front": "He/She/It will put\n(future irregular)", "back": "pondr\u00e1"}
+{"front": "We will put\n(future irregular)", "back": "pondremos"}
+{"front": "They will put\n(future irregular)", "back": "pondr\u00e1n"}
+{"front": "I will stay (remain)\n(future)", "back": "quedar\u00e9"}
+{"front": "You will stay (remain)\n(future)", "back": "quedar\u00e1s"}
+{"front": "He/She/It will stay (remain)\n(future)", "back": "quedar\u00e1"}
+{"front": "We will stay (remain)\n(future)", "back": "quedaremos"}
+{"front": "They will stay (remain)\n(future)", "back": "quedar\u00e1n"}
+{"front": "I will want\n(future irregular)", "back": "querr\u00e9"}
+{"front": "You will want\n(future irregular)", "back": "querr\u00e1s"}
+{"front": "He/She/It will want\n(future irregular)", "back": "querr\u00e1"}
+{"front": "We will want\n(future irregular)", "back": "querremos"}
+{"front": "They will want\n(future irregular)", "back": "querr\u00e1n"}
+{"front": "I will know (have knowledge of)\n(future irregular)", "back": "sabr\u00e9"}
+{"front": "You will know (have knowledge of)\n(future irregular)", "back": "sabr\u00e1s"}
+{"front": "He/She/It will know (have knowledge of)\n(future irregular)", "back": "sabr\u00e1"}
+{"front": "We will know (have knowledge of)\n(future irregular)", "back": "sabremos"}
+{"front": "They will know (have knowledge of)\n(future irregular)", "back": "sabr\u00e1n"}
+{"front": "I will take out (remove)\n(future)", "back": "sacar\u00e9"}
+{"front": "You will take out (remove)\n(future)", "back": "sacar\u00e1s"}
+{"front": "He/She/It will take out (remove)\n(future)", "back": "sacar\u00e1"}
+{"front": "We will take out (remove)\n(future)", "back": "sacaremos"}
+{"front": "They will take out (remove)\n(future)", "back": "sacar\u00e1n"}
+{"front": "I will leave\n(future irregular)", "back": "saldr\u00e9"}
+{"front": "You will leave\n(future irregular)", "back": "saldr\u00e1s"}
+{"front": "He/She/It will leave\n(future irregular)", "back": "saldr\u00e1"}
+{"front": "We will leave\n(future irregular)", "back": "saldremos"}
+{"front": "They will leave\n(future irregular)", "back": "saldr\u00e1n"}
+{"front": "I will feel\n(future)", "back": "sentir\u00e9"}
+{"front": "You will feel\n(future)", "back": "sentir\u00e1s"}
+{"front": "He/She/It will feel\n(future)", "back": "sentir\u00e1"}
+{"front": "We will feel\n(future)", "back": "sentiremos"}
+{"front": "They will feel\n(future)", "back": "sentir\u00e1n"}
+{"front": "I will be (permanent condition)\n(future)", "back": "ser\u00e9"}
+{"front": "You will be (permanent condition)\n(future)", "back": "ser\u00e1s"}
+{"front": "He/She/It will be (permanent condition)\n(future)", "back": "ser\u00e1"}
+{"front": "We will be (permanent condition)\n(future)", "back": "seremos"}
+{"front": "They will be (permanent condition)\n(future)", "back": "ser\u00e1n"}
+{"front": "I will have (tener)\n(future irregular)", "back": "tendr\u00e9"}
+{"front": "You will have (tener)\n(future irregular)", "back": "tendr\u00e1s"}
+{"front": "He/She/It will have (tener)\n(future irregular)", "back": "tendr\u00e1"}
+{"front": "We will have (tener)\n(future irregular)", "back": "tendremos"}
+{"front": "They will have (tener)\n(future irregular)", "back": "tendr\u00e1n"}
+{"front": "I will take in (drink)\n(future)", "back": "tomar\u00e9"}
+{"front": "You will take in (drink)\n(future)", "back": "tomar\u00e1s"}
+{"front": "He/She/It will take in (drink)\n(future)", "back": "tomar\u00e1"}
+{"front": "We will take in (drink)\n(future)", "back": "tomaremos"}
+{"front": "They will take in (drink)\n(future)", "back": "tomar\u00e1n"}
+{"front": "I will bring\n(future)", "back": "traer\u00e9"}
+{"front": "You will bring\n(future)", "back": "traer\u00e1s"}
+{"front": "He/She/It will bring\n(future)", "back": "traer\u00e1"}
+{"front": "We will bring\n(future)", "back": "traeremos"}
+{"front": "They will bring\n(future)", "back": "traer\u00e1n"}
+{"front": "I will come\n(future irregular)", "back": "vendr\u00e9"}
+{"front": "You will come\n(future irregular)", "back": "vendr\u00e1s"}
+{"front": "He/She/It will come\n(future irregular)", "back": "vendr\u00e1"}
+{"front": "We will come\n(future irregular)", "back": "vendremos"}
+{"front": "They will come\n(future irregular)", "back": "vendr\u00e1n"}
+{"front": "I will see\n(future)", "back": "ver\u00e9"}
+{"front": "You will see\n(future)", "back": "ver\u00e1s"}
+{"front": "He/She/It will see\n(future)", "back": "ver\u00e1"}
+{"front": "We will see\n(future)", "back": "veremos"}
+{"front": "They will see\n(future)", "back": "ver\u00e1n"}
+{"front": "I will live\n(future)", "back": "vivir\u00e9"}
+{"front": "You will live\n(future)", "back": "vivir\u00e1s"}
+{"front": "He/She/It will live\n(future)", "back": "vivir\u00e1"}
+{"front": "We will live\n(future)", "back": "viviremos"}
+{"front": "They will live\n(future)", "back": "vivir\u00e1n"}
+{"front": "I will return (turn around)\n(future)", "back": "volver\u00e9"}
+{"front": "You will return (turn around)\n(future)", "back": "volver\u00e1s"}
+{"front": "He/She/It will return (turn around)\n(future)", "back": "volver\u00e1"}
+{"front": "We will return (turn around)\n(future)", "back": "volveremos"}
+{"front": "They will return (turn around)\n(future)", "back": "volver\u00e1n"}
+{"front": "Finishing\n(gerund)", "back": "acabando"}
+{"front": "Walking\n(gerund)", "back": "andando"}
+{"front": "Learning\n(gerund)", "back": "aprendiendo"}
+{"front": "Falling\n(gerund)", "back": "cayendo"}
+{"front": "Singing\n(gerund)", "back": "cantando"}
+{"front": "Begining/Starting\n(gerund)", "back": "comenzando"}
+{"front": "Eating\n(gerund)", "back": "comiendo"}
+{"front": "Buying\n(gerund)", "back": "comprando"}
+{"front": "Knowing (to be fimiliar with)\n(gerund)", "back": "conociendo"}
+{"front": "Building (the act of)\n(gerund)", "back": "construyendo"}
+{"front": "Telling/Counting\n(gerund)", "back": "contando"}
+{"front": "Believing\n(gerund)", "back": "creyendo"}
+{"front": "Giving (the act of)\n(gerund)", "back": "dando"}
+{"front": "Owing/Having something to do\n(gerund)", "back": "debiendo"}
+{"front": "Saying\n(gerund)", "back": "diciendo"}
+{"front": "Sleeping\n(gerund)", "back": "durmiendo"}
+{"front": "Entering\n(gerund)", "back": "entrando"}
+{"front": "Writing\n(gerund)", "back": "escribiendo"}
+{"front": "Being (temporary condition)\n(gerund)", "back": "estando"}
+{"front": "Studying\n(gerund)", "back": "estudiando"}
+{"front": "Liking\n(gerund)", "back": "gustando"}
+{"front": "Having (haber)\n(gerund)", "back": "habiendo"}
+{"front": "Talking\n(gerund)", "back": "hablando"}
+{"front": "Doing\n(gerund)", "back": "haciendo"}
+{"front": "Going\n(gerund)", "back": "yendo"}
+{"front": "Reading\n(gerund)", "back": "leyendo"}
+{"front": "Calling\n(gerund)", "back": "llamando"}
+{"front": "Taking\n(gerund)", "back": "llevando"}
+{"front": "Driving\n(gerund)", "back": "manejando"}
+{"front": "Looking\n(gerund)", "back": "mirando"}
+{"front": "Hearing\n(gerund)", "back": "oyendo"}
+{"front": "Paying\n(gerund)", "back": "pagando"}
+{"front": "Thinking\n(gerund)", "back": "pensando"}
+{"front": "Losing\n(gerund)", "back": "perdiendo"}
+{"front": "Having the ability to\n(gerund)", "back": "pudiendo"}
+{"front": "Putting\n(gerund)", "back": "poniendo"}
+{"front": "Staying (remaining)\n(gerund)", "back": "quedando"}
+{"front": "Wanting\n(gerund)", "back": "queriendo"}
+{"front": "Knowing (having knowledge of)\n(gerund)", "back": "sabiendo"}
+{"front": "Taking out (removing)\n(gerund)", "back": "sacando"}
+{"front": "Leaving\n(gerund)", "back": "saliendo"}
+{"front": "Feeling\n(gerund)", "back": "sintiendo"}
+{"front": "Being (permanient condition)\n(gerund)", "back": "siendo"}
+{"front": "Having (tener)\n(gerund)", "back": "teniendo"}
+{"front": "Taking in\n(gerund)", "back": "tomando"}
+{"front": "Bringing\n(gerund)", "back": "trayendo"}
+{"front": "Coming\n(gerund)", "back": "viniendo"}
+{"front": "Seeing\n(gerund)", "back": "viendo"}
+{"front": "Living\n(gerund)", "back": "viviendo"}
+{"front": "Returning (turning around)\n(gerund)", "back": "volviendo"}
+{"front": "I do\n(irregular present)", "back": "hago"}
+{"front": "We drive\n(present)", "back": "manejamos"}
+{"front": "They will fall\n(future)", "back": "caer\u00e1n"}
+{"front": "They will drive\n(future)", "back": "manejar\u00e1n"}
+{"front": "I walk\n(present)", "back": "ando"}
+{"front": "You walk\n(present)", "back": "andas"}
+{"front": "He/She/It walks\n(present)", "back": "anda"}
+{"front": "We walk\n(present)", "back": "andamos"}
+{"front": "They walk\n(present)", "back": "andan"}
+{"front": "I learn\n(present)", "back": "aprendo"}
+{"front": "You learn\n(present)", "back": "aprendes"}
+{"front": "We learn\n(present)", "back": "aprendemos"}
+{"front": "He/She/It learns\n(present)", "back": "aprende"}
+{"front": "They learn\n(present)", "back": "aprenden"}
+{"front": "I fall\n(irregular present)", "back": "caigo"}
+{"front": "You fall\n(present)", "back": "caes"}
+{"front": "He/She/It falls\n(present)", "back": "cae"}
+{"front": "We fall\n(present)", "back": "caemos"}
+{"front": "They fall\n(present)", "back": "caen"}
+{"front": "I sing\n(present)", "back": "canto"}
+{"front": "You sing\n(present)", "back": "cantas"}
+{"front": "He/She/It sings\n(present)", "back": "canta"}
+{"front": "We sing\n(present)", "back": "cantamos"}
+{"front": "They sing\n(present)", "back": "cantan"}
+{"front": "To finish, to end\n(infinitive)", "back": "acabar"}
+{"front": "To walk\n(infinitive)", "back": "andar"}
+{"front": "To learn\n(infinitive)", "back": "aprender"}
+{"front": "To fall\n(infinitive)", "back": "caer"}
+{"front": "To sing\n(infinitive)", "back": "cantar"}
+{"front": "To begin, to start\n(infinitive)", "back": "comenzar"}
+{"front": "To eat\n(infinitive)", "back": "comer"}
+{"front": "To buy\n(infinitive)", "back": "comprar"}
+{"front": "To know (be familiar with)\n(infinitive)", "back": "conocer"}
+{"front": "\n(infinitive)", "back": "construir"}
+{"front": "To tell, to count\n(infinitive)", "back": "contar"}
+{"front": "To believe\n(infinitive)", "back": "creer"}
+{"front": "To give\n(infinitive)", "back": "dar"}
+{"front": "To owe (have to do something)\n(infinitive)", "back": "deber"}
+{"front": "To say\n(infinitive)", "back": "decir"}
+{"front": "To sleep\n(infinitive)", "back": "dormir"}
+{"front": "To enter\n(infinitive)", "back": "entrar"}
+{"front": " To write\n(infinitive)", "back": "escribir"}
+{"front": "\n(infinitive)", "back": "estar"}
+{"front": "To study\n(infinitive)", "back": "estudiar"}
+{"front": "\n(infinitive)", "back": "gustar"}
+{"front": "To have (perfect tense, auxiliary verb)\n(infinitive)", "back": "haber"}
+{"front": "\n(infinitive)", "back": "hablar"}
+{"front": "\n(infinitive)", "back": "hacer"}
+{"front": "To go\n(infinitive)", "back": "ir"}
+{"front": "To read\n(infinitive)", "back": "leer"}
+{"front": "To call\n(infinitive)", "back": "llamar"}
+{"front": "To take\n(infinitive)", "back": "llevar"}
+{"front": "\n(infinitive)", "back": "manejar"}
+{"front": "To look\n(infinitive)", "back": "mirar"}
+{"front": "To hear\n(infinitive)", "back": "o\u00edr"}
+{"front": "To pay\n(infinitive)", "back": "pagar"}
+{"front": "To think\n(infinitive)", "back": "pensar"}
+{"front": "To lose\n(infinitive)", "back": "perder"}
+{"front": "To be able to (can)\n(infinitive)", "back": "poder"}
+{"front": "To put\n(infinitive)", "back": "poner"}
+{"front": "To remain\n(infinitive)", "back": "quedar"}
+{"front": "To want\n(infinitive)", "back": "querer"}
+{"front": "To know (have knowledge of)\n(infinitive)", "back": "saber"}
+{"front": "To take out, remove\n(infinitive)", "back": "sacar"}
+{"front": "To leave\n(infinitive)", "back": "salir"}
+{"front": "To feel\n(infinitive)", "back": "sentir"}
+{"front": "To be (permanent condition)\n(infinitive)", "back": "ser"}
+{"front": "To have (possess)\n(infinitive)", "back": "tener"}
+{"front": "To take in (to drink)\n(infinitive)", "back": "tomar"}
+{"front": "To bring\n(infinitive)", "back": "traer"}
+{"front": "To come\n(infinitive)", "back": "venir"}
+{"front": "To see\n(infinitive)", "back": "ver"}
+{"front": "To live\n(infinitive)", "back": "vivir"}
+{"front": "To come back, return\n(infinitive)", "back": "volver"}

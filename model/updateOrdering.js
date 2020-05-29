@@ -14,6 +14,9 @@ function updateOrdering(userId, deckId, newOrdering) {
 			[newOrdering, userId, deckId],
 		)
 		.then((result) => {
+			// console.log(
+			// 	`NewOrdering for u:${userId} d:${deckId} , ${newOrdering}`,
+			// );
 			// console.log("updateOrdering result", result.rows)
 			if (result.rows.length !== 1) {
 				throw errNow(

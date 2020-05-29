@@ -1,3 +1,5 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-await-in-loop */
 const addCardModel = require('../../model/addCard');
 const updateOrdering = require('../../model/updateOrdering.js');
 const getCollectionsByDeck = require('../../model/getCollectionsByDeck.js');
@@ -49,15 +51,18 @@ async function createCard(req, res, next) {
 		// Iterate through all the collections that use the deck
 		// Decode them, insert new card id at the start and re-save
 		const collections = await getCollectionsByDeck(deckId);
-		collections.forEach(async (collection) => {
-			const order = JSON.parse(collection.ordering);
+
+		// Refactored as for loop to avoid async jank!
+		// We don't want to return til this has been done.
+		for (let colIdx = 0; colIdx < collections.length; colIdx++) {
+			const order = JSON.parse(collections[colIdx].ordering);
 			order.unshift(newCardId);
 			await updateOrdering(
-				collection.user_id,
-				collection.deck_id,
+				collections[colIdx].user_id,
+				collections[colIdx].deck_id,
 				JSON.stringify(order),
 			);
-		});
+		}
 
 		return res.status(201).send({
 			created: true,
