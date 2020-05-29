@@ -1,0 +1,35 @@
+{"front": "What is a magnetic field?", "back": "A magnetic field is a region where magnets, magnetic materials like iron and steel and also wires carrying currents experience of force against them."}
+{"front": "How do we know the Earth\u2019s core is magnetic?", "back": "Compass needles experience of force that makes some point north therefore the earth must have a magnetic field therefore the core must be magnetic."}
+{"front": "What is meant by an induced magnet?", "back": "A magnetic material which becomes a magnet with its own magnetic field when it is placed inside another magnetic field"}
+{"front": "What force is experienced by 2 poles of a magnet which are the same when they are placed next to each other?", "back": "They will repel each other, feel repulsive force"}
+{"front": "What force is experienced by two opposite poles of two magnets which are placed next to each other?", "back": "They will attract each other, feel an attractive force."}
+{"front": "What else has magnetic fields other than a magnet?", "back": "Electric current"}
+{"front": "What is the right hand thumb rule?", "back": "If your thumb is in the direction of the current and you call the fingers the direction of your fingers is the direction of the magnetic field"}
+{"front": "How does the strength of a magnetic field change with the current and the distance from the wire?", "back": "The larger the current and the closer to the why you are the stronger the field is"}
+{"front": "How can you increase the strength of the magnetic field that a why produces?", "back": "By wrapping the wire into a coil called a fall in oil"}
+{"front": "What is a solenoid?", "back": "A wire carrying a current that's been wrapped up in a coil"}
+{"front": "why does the field around a solenoid get stronger than around just a wire?", "back": "Because the field lines of each wire line up making the magnetic field stronger"}
+{"front": "How does the magnetic field of a solenoid differ inside to outside the coil?", "back": "the magnetic field is strong and uniform at every point in the coil outside the field is like one round a bar magnet"}
+{"front": "What happens to the magnetic field of an electro magnet if you stop the current?", "back": "the magnetic field disappears"}
+{"front": "what do you call a solenoid with an iron core?", "back": "an electromagnet"}
+{"front": "Why are electromagnets useful?", "back": "Because you can easily switch them on and off and you can change how much magnetic force they have."}
+{"front": "How can you increase the strength of the magnetic field of a solenoid or electromagnet?", "back": "By putting a block of iron in the centre of the core. The iron core becomes an induced magnet or you could increase the current or you could increase the number of coils"}
+{"front": "What is the motor effect?", "back": "When a current carrying wire in a magnetic field experiences a force pushing it sideways"}
+{"front": "Describe the interactions that lead to the motor effect", "back": "The field lines go in opposite directions on each side of the wire because they go round in a circle. If this wire is in another magnetic field the field lines going in the same direction will be strengthened on one side and oppose each other, weakening the field on the other, meaning the wire experience is a push force."}
+{"front": "In what direction will the force be?", "back": "At 90 degrees to both the current carrying wire and the magnetic field."}
+{"front": "Why is the motor effect useful?", "back": "It is a handy way of producing movement from an electric current."}
+{"front": "What does the force acting on the wire in a magnetic field depend on?", "back": "3 things: the magnetic flux density (how close the field lines are), the size of the current, the length of wire that's in the magnetic field."}
+{"front": "Do you need to memorize the equation for magnetic flux density?", "back": "No it'll be given to you. "}
+{"front": "What is Fleming's left-hand rule?", "back": "With thumb, first finger and second finger at 90 degrees to each other.&nbsp;"}
+{"front": "<b>F</b>irst finger = the direction of <b>F</b>ield", "back": "se<b>C</b>ond&nbsp;finger = direction of <b>C</b>urrent&nbsp;"}
+{"front": "What happens if you reverse the direction of the magnetic field?", "back": "The direction of the force that brings about movement is reversed too."}
+{"front": "Which direction will the force be on the wire in this diagram?", "back": "<img src=\"\"clip_image001 (1).png\"\">"}
+{"front": "Which direction will the force be on the wire in this diagram?", "back": "<img src=\"\"clip_image001 (2).png\"\">"}
+{"front": "Which direction will the force be on the wire in this diagram?", "back": "<img src=\"\"clip_image001 (3).png\"\">"}
+{"front": "Will a loop of wire lying flat in a horizontal magnetic field experience a force?", "back": "Yes - one arm of the loop will be pushed up and the other arm will be pushed down"}
+{"front": "What would happen if a loop of current carrying wire turned 90 degrees in a magnetic field and didn't have a commutator?", "back": "The top loop would be pushed up and the bottom loop would be pushed down and the loop would get stuck."}
+{"front": "How do we stop the loop of wire getting stuck in the vertical position on a motor?", "back": "By having a commutator that reverses the direction of the current when it reaches the top of its spin"}
+{"front": "What does a split ring commutator do in a motor?", "back": "It reverses the direction of the current, therefore reversing the direction of the force every half turn thereby keeping the loop of wire spinning by pushing each part of the wire up then down each turn."}
+{"front": "How can you increase the speed of an electric motor?", "back": "-by increasing the current "}
+{"front": "-by increasing the strength of the magnetic field ", "back": "-by increasing the number of coils"}
+{"front": "Why don\u2019t you need a commutator with an AC current?", "back": "Because the current is already changing direction, so each side of the loop will be pushed up then down"}

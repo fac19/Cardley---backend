@@ -1,0 +1,120 @@
+{"front": "Defines the document type", "back": "<!DOCTYPE>\u00ca"}
+{"front": "Defines an HTML document", "back": "<html>"}
+{"front": "Defines a title for the document", "back": "<title>"}
+{"front": "Defines the document's body", "back": "<body>"}
+{"front": "Defines HTML headings", "back": "<h1> to <h6>"}
+{"front": "Defines a paragraph", "back": "<p>"}
+{"front": "Inserts a single line break", "back": "<br>"}
+{"front": "Defines a thematic change in the content", "back": "<hr>"}
+{"front": "Defines a comment", "back": "<!--...-->"}
+{"front": "Defines an acronym. Use <abbr> instead.", "back": "<acronym>"}
+{"front": "Defines an abbreviation or an acronym", "back": "<abbr>"}
+{"front": "Defines contact information for the author/owner of a document/article", "back": "<address>"}
+{"front": "Defines bold text", "back": "<b>"}
+{"front": "Isolates a part of text that might be formatted in a different direction from other text outside it", "back": "<bdi>"}
+{"front": "Overrides the current text direction", "back": "<bdo>"}
+{"front": "Defines big text. Use CSS instead.", "back": "<big>"}
+{"front": "Defines a section that is quoted from another source", "back": "<blockquote>"}
+{"front": "Defines centered text. Use CSS instead.", "back": "<center>"}
+{"front": "Defines the title of a work", "back": "<cite>"}
+{"front": "Defines a piece of computer code", "back": "<code>"}
+{"front": "Defines text that has been deleted from a document", "back": "<del>"}
+{"front": "Represents the defining instance of a term", "back": "<dfn>"}
+{"front": "Defines emphasized text", "back": "<em>"}
+{"front": "Defines font, color, and size for text. Use CSS instead.", "back": "<font>"}
+{"front": "Defines a part of text in an alternate voice or mood", "back": "<i>"}
+{"front": "Defines a text that has been inserted into a document", "back": "<ins>"}
+{"front": "Defines keyboard input", "back": "<kbd>"}
+{"front": "Defines marked/highlighted text", "back": "<mark>"}
+{"front": "Defines a scalar measurement within a known range (a gauge)", "back": "<meter>"}
+{"front": "Defines preformatted text", "back": "<pre>"}
+{"front": "Represents the progress of a task", "back": "<progress>"}
+{"front": "Defines a short quotation", "back": "<q>"}
+{"front": "Defines what to show in browsers that do not support ruby annotations", "back": "<rp>"}
+{"front": "Defines an explanation/pronunciation of characters (for East Asian typography)", "back": "<rt>"}
+{"front": "Defines a ruby annotation (for East Asian typography)", "back": "<ruby>"}
+{"front": "Defines text that is no longer correct", "back": "<s>"}
+{"front": "Defines sample output from a computer program", "back": "<samp>"}
+{"front": "Defines smaller text", "back": "<small>"}
+{"front": "Defines strikethrough text. Use <del> or <s> instead.", "back": "<strike>"}
+{"front": "Defines important text", "back": "<strong>"}
+{"front": "Defines subscripted text", "back": "<sub>"}
+{"front": "Defines superscripted text", "back": "<sup>"}
+{"front": "Defines a date/time", "back": "<time>"}
+{"front": "Defines teletype text. Use CSS instead.", "back": "<tt>"}
+{"front": "Defines text that should be stylistically different from normal text", "back": "<u>"}
+{"front": "Defines a variable", "back": "<var>"}
+{"front": "Defines a possible line-break", "back": "<wbr>"}
+{"front": "Defines an HTML form for user input", "back": "<form>"}
+{"front": "Defines an input control", "back": "<input>"}
+{"front": "Defines a multiline input control (text area)", "back": "<textarea>"}
+{"front": "Defines a clickable button", "back": "<button>"}
+{"front": "Defines a drop-down list", "back": "<select>"}
+{"front": "Defines a group of related options in a drop-down list", "back": "<optgroup>"}
+{"front": "Defines an option in a drop-down list", "back": "<option>"}
+{"front": "Defines a label for an <input> element", "back": "<label>"}
+{"front": "Groups related elements in a form", "back": "<fieldset>"}
+{"front": "Defines a caption for a <fieldset> element", "back": "<legend>"}
+{"front": "Specifies a list of pre-defined options for input controls", "back": "<datalist>"}
+{"front": "Defines a key-pair generator field (for forms)", "back": "<keygen>"}
+{"front": "Defines the result of a calculation", "back": "<output>"}
+{"front": "Defines a window (a frame) in a frameset", "back": "<frame>"}
+{"front": "Defines a set of frames", "back": "<frameset>"}
+{"front": "Defines an alternate content for users that do not support frames", "back": "<noframes>"}
+{"front": "Defines an inline frame", "back": "<iframe>"}
+{"front": "Defines an image", "back": "<img>"}
+{"front": "Defines a client-side image-map", "back": "<map>"}
+{"front": "Defines an area inside an image-map", "back": "<area>"}
+{"front": "Used to draw graphics, on the fly, via scripting (usually JavaScript)", "back": "<canvas>"}
+{"front": "Defines a caption for a <figure> element", "back": "<figcaption>"}
+{"front": "Specifies self-contained content", "back": "<figure>"}
+{"front": "Defines a container for multiple image resources", "back": "<picture>"}
+{"front": "Defines sound content", "back": "<audio>"}
+{"front": "Defines multiple media resources for media elements (<video>, <audio> and <picture>)", "back": "<source>"}
+{"front": "Defines text tracks for media elements (<video> and <audio>)", "back": "<track>"}
+{"front": "Defines a video or movie", "back": "<video>"}
+{"front": "Defines a hyperlink", "back": "<a>"}
+{"front": "Defines the relationship between a document and an external resource (most used to link to style sheets)", "back": "<link>"}
+{"front": "Defines navigation links", "back": "<nav>"}
+{"front": "Defines an unordered list", "back": "<ul>"}
+{"front": "Defines an ordered list", "back": "<ol>"}
+{"front": "Defines a list item", "back": "<li>"}
+{"front": "Defines a directory list. Use <ul> instead.", "back": "<dir>"}
+{"front": "Defines a description list", "back": "<dl>"}
+{"front": "Defines a term/name in a description list", "back": "<dt>"}
+{"front": "Defines a description of a term/name in a description list", "back": "<dd>"}
+{"front": "Defines a list/menu of commands", "back": "<menu>"}
+{"front": "Defines a command/menu item that the user can invoke from a popup menu", "back": "<menuitem>"}
+{"front": "Defines a table", "back": "<table>"}
+{"front": "Defines a table caption", "back": "<caption>"}
+{"front": "Defines a header cell in a table", "back": "<th>"}
+{"front": "Defines a row in a table", "back": "<tr>"}
+{"front": "Defines a cell in a table", "back": "<td>"}
+{"front": "Groups the header content in a table", "back": "<thead>"}
+{"front": "Groups the body content in a table", "back": "<tbody>"}
+{"front": "Groups the footer content in a table", "back": "<tfoot>"}
+{"front": "Specifies column properties for each column within a <colgroup> element", "back": "<col>"}
+{"front": "Specifies a group of one or more columns in a table for formatting", "back": "<colgroup>"}
+{"front": "Defines style information for a document", "back": "<style>"}
+{"front": "Defines a section in a document", "back": "<div>"}
+{"front": "Defines a section in a document", "back": "<span>"}
+{"front": "Defines a header for a document or section", "back": "<header>"}
+{"front": "Defines a footer for a document or section", "back": "<footer>"}
+{"front": "Specifies the main content of a document", "back": "<main>"}
+{"front": "Defines a section in a document", "back": "<section>"}
+{"front": "Defines an article", "back": "<article>"}
+{"front": "Defines content aside from the page content", "back": "<aside>"}
+{"front": "Defines additional details that the user can view or hide", "back": "<details>"}
+{"front": "Defines a dialog box or window", "back": "<dialog>"}
+{"front": "Defines a visible heading for a <details> element", "back": "<summary>"}
+{"front": "Links the given content with a machine-readable translation", "back": "<data>"}
+{"front": "Defines information about the document", "back": "<head>"}
+{"front": "Defines metadata about an HTML document", "back": "<meta>"}
+{"front": "Specifies the base URL/target for all relative URLs in a document", "back": "<base>"}
+{"front": "Specifies a default color, size, and font for all text in a document. Use CSS instead.", "back": "<basefont>"}
+{"front": "Defines a client-side script", "back": "<script>"}
+{"front": "Defines an alternate content for users that do not support client-side scripts", "back": "<noscript>"}
+{"front": "Defines an embedded applet. Use <embed> or <object> instead.", "back": "<applet>"}
+{"front": "Defines a container for an external (non-HTML) application", "back": "<embed>"}
+{"front": "Defines an embedded object", "back": "<object>"}
+{"front": "Defines a parameter for an object", "back": "<param>"}
